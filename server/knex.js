@@ -12,6 +12,9 @@ const db = knex({
   //     tableName: "knex_migrations",
   //   },
   searchPath: "public",
+  seeds: {
+    directory: "../seeds/01_intial.js",
+  },
 });
 
 module.exports = db;

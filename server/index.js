@@ -1,6 +1,7 @@
 require("dotenv").config();
 const app = require("./app");
 const db = require("./knex");
+const { seedDatabase } = require("../data/import");
 
 const PORT = process.env.PORT || 9000;
 
@@ -8,6 +9,8 @@ const PORT = process.env.PORT || 9000;
   try {
     console.log("Running migrations");
     await db.migrate.latest();
+    await console.log("Running seeds");
+    await seedDatabase();
 
     console.log("Starting express");
     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
