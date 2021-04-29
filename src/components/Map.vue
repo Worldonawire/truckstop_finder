@@ -1,7 +1,7 @@
 <template>
-  <div className="map-container">
+  <div class="map-container">
     <GmapMap
-      className="map"
+      v-if="this.$store.state.zoomOnStateToggle === false"
       :zoom="5"
       :center="{ lat: 39.5, lng: -98.35 }"
       map-type-id="terrain"
@@ -15,18 +15,24 @@
         @rightclick="markerRightClicked"
       />
     </GmapMap>
-    <FindButton id="find-button" />
+    <FindButton
+      id="find-button"
+      v-if="this.$store.state.zoomOnStateToggle === false"
+    />
+    <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
   </div>
 </template>
 
 <script>
 import { gmapApi } from "vue2-google-maps";
 import FindButton from "./FindButton.vue";
+import TruckStops from "./TruckStops.vue";
 
 export default {
   name: "Map",
   components: {
     FindButton,
+    TruckStops,
   },
 
   mounted() {
@@ -51,9 +57,5 @@ export default {
 <style scoped>
 .map-container {
   position: relative;
-}
-
-.map {
-  position: absolute;
 }
 </style>
