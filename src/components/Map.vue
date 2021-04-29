@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div className="map-container">
     <GmapMap
+      className="map"
       :zoom="5"
       :center="{ lat: 39.5, lng: -98.35 }"
       map-type-id="terrain"
-      style="width: 100%; height: 300px"
+      style="width: 100%; height: 98vh"
     >
       <GmapMarker
         v-for="location in locations"
@@ -13,8 +14,8 @@
         :animation="location.defaultAnimation"
         @rightclick="markerRightClicked"
       />
-      <FindButton />
     </GmapMap>
+    <FindButton id="find-button" />
   </div>
 </template>
 
@@ -47,4 +48,12 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.map-container {
+  position: relative;
+}
+
+.map {
+  position: absolute;
+}
+</style>
