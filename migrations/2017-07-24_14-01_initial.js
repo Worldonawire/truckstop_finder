@@ -8,10 +8,9 @@ exports.up = function(knex) {
     table.text("address");
     table.float("latitude");
     table.float("longitude");
-    table.specificType("amenities", "text[]");
-    table.specificType("payments", "text[]");
-    table.specificType("restaurants", "text[]");
+    table.specificType("amenities", "text ARRAY");
+    table.specificType("payments", "text ARRAY");
+    table.specificType("restaurants", "text ARRAY");
   });
 };
-
 exports.down = function(knex, Promise) {};
