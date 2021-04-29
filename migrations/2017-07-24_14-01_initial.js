@@ -1,7 +1,6 @@
 exports.up = function(knex) {
   return knex.schema.createTable("locations", (table) => {
     table.increments("id").notNullable();
-    table.primary("id");
     table.text("name").notNullable();
     table.text("type");
     table.text("state");
@@ -15,6 +14,4 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function(knex, Promise) {
-  return knex.schema.dropTable("locations");
-};
+exports.down = function(knex, Promise) {};
