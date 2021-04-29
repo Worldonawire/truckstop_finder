@@ -46,7 +46,7 @@ const seedDatabase = async () => {
         return element.Concept.Name;
       });
 
-      const result = await db("locations").insert({
+      await db("locations").insert({
         name,
         type,
         state,
@@ -58,7 +58,6 @@ const seedDatabase = async () => {
         payments,
         restaurants,
       });
-      console.log(result);
     }
   } catch (err) {
     console.error("Error inserting records", err);

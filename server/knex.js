@@ -7,10 +7,6 @@ const db = knex({
       process.env.DATABASE_URL ||
       `postgres://${process.env.USER}:${process.env.DATABASE_PW}@127.0.0.1:5432/truckstopapi`,
   },
-  //   migrations: {
-  //     directory: "../migrations",
-  //     tableName: "knex_migrations",
-  //   },
   searchPath: "public",
   seeds: {
     directory: "../seeds/01_intial.js",
