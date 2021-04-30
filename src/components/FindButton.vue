@@ -110,8 +110,6 @@ button {
   width: 400px;
   left: 41%;
   top: 33%;
-  /* margin-left: auto;
-    margin-right: auto; */
 }
 
 span {

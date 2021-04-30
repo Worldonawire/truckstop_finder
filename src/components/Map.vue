@@ -1,9 +1,10 @@
+// { lat: 39.5, lng: -98.35 } // v-if="this.$store.state.zoomOnStateToggle ===
+false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
 <template>
   <div class="map-container">
     <GmapMap
-      v-if="this.$store.state.zoomOnStateToggle === false"
-      :zoom="5"
-      :center="{ lat: 39.5, lng: -98.35 }"
+      :zoom="this.$store.state.zoom"
+      :center="this.$store.state.center"
       map-type-id="terrain"
       style="width: 100%; height: 98vh"
     >
