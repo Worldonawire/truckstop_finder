@@ -8,7 +8,14 @@ const db = knex({
       `postgres://${process.env.USER}:${process.env.DATABASE_PW}@127.0.0.1:5432/truckstopapi`,
     ssl: { rejectUnauthorized: false },
   },
+  //   migrations: {
+  //     directory: "../migrations",
+  //     tableName: "knex_migrations",
+  //   },
   searchPath: "public",
+  seeds: {
+    directory: "../seeds/01_intial.js",
+  },
 });
 
 module.exports = db;
