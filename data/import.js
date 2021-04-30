@@ -3,6 +3,7 @@ const db = require("../server/knex.js");
 
 const seedDatabase = async () => {
   try {
+    await db("locations").del();
     const locations = JSON.parse(fs.readFileSync("./data/locations.json"));
     for (const location of locations) {
       const name = location.PreferredName;
