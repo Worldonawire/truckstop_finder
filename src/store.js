@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import usStateCoords from "../src/utils/stateCoords";
+import _ from "lodash";
 
 Vue.use(Vuex);
 
@@ -9,12 +11,13 @@ export default new Vuex.Store({
     locations: [],
     zoomOnStateToggle: false,
     clientLocation: "",
+    center: { lat: 39.5, lng: -98.35 },
+    zoom: 5,
   },
 
   mutations: {
     setLocation(state, payload) {
       state.clientLocation = payload;
-      console.log("THIS IS THE CLIENTS STATE", state.clientLocation);
     },
 
     setLocations(state, locations) {
@@ -22,6 +25,8 @@ export default new Vuex.Store({
     },
 
     zoomOnState(state) {
+      state.center = usStateCoords[_.capitalize(state.clientLocation)];
+      state.zoom = 7;
       state.zoomOnStateToggle = true;
     },
   },

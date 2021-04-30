@@ -57,14 +57,19 @@ export default {
     },
 
     onEnter() {
-      this.search = this.results[this.arrowCounter];
+      if (this.arrowCounter !== -1) {
+        this.search = this.results[this.arrowCounter];
+      }
+
       this.arrowCounter = -1;
       this.isOpen = false;
       this.$store.commit("setLocation", this.search);
+      this.$store.commit("zoomOnState");
     },
 
     onChange() {
       this.filterResults();
+      this.$store.commit("setLocation", this.search);
       this.isOpen = true;
     },
 
@@ -81,7 +86,6 @@ export default {
     },
 
     handleClickOutside(event) {
-      console.log(event);
       if (!this.$el.contains(event.target)) {
         this.arrowCounter = -1;
         this.isOpen = false;
