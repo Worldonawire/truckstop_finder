@@ -10,7 +10,7 @@ false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
     >
       <GmapMarker         
         v-for="location in locations"
-        :key="location.key"
+        :key="location.name"
         :position="location.position"
         :animation="location.defaultAnimation"
         @rightclick="markerRightClicked"
@@ -52,6 +52,7 @@ export default {
 };
 </script>
 <style scoped>
+
 .map-container {
   position: relative;
   display: flex;

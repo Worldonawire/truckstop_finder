@@ -2,29 +2,29 @@
 <template>
   <div>
     <div class="truck-stops-pane">
-    <div class="truck-stop-details">
-      <div class="keyDetails">
-        <h1>Truck Stop Name</h1>
-          <h2>Address</h2>
-          <h2>City</h2>
-          <h2>State</h2>
-      </div>
-      <div class="extraDetails">
-        <div class="amenities">icon1</div>
-        <div class="payments">icon2</div>
-        <div class="restaurants">icon3</div>
+    <div v-if="this.$store.state.detailsPage === false">
+      <div class="truck-stop-details" v-for="location in locations" :key="location.name" @click='detailsPageCall(location)'>
+        <div class="keyDetails">
+          <h1>{{location.name + " Truck Stop"}}</h1>
+            <h2>{{location.address}}</h2>
+            <h2>{{location.city+", "+ location.state}}</h2>
+        </div>
+        <div class="extraDetails">
+          <div class="amenities">icon1</div>
+          <div class="payments">icon2</div>
+          <div class="restaurants">icon3</div>
+        </div>
       </div>
     </div>
-    </div>
-
-     <button v-on:click="openFilterPage"></button>
-    <!-- <TruckStopInfo v-if="this.$store.state.truckStopDeets === true"
+    <TruckStopInfo v-if="this.$store.state.detailsPage === true"
       :data="truckstopData"
       :message="this.$store.state.selectedTruckstop"
-    /> -->
-  
-    <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
+    />
     </div>
+     <button class="filter-button" @click="openFilterPage"></button>
+     <button class="go-back-button" @click="goBackToMain"></button>
+    <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
+  </div>
 </template>
 
 <script>
@@ -37,6 +37,13 @@ export default {
   computed: {
     google: gmapApi,
   },
+
+  computed: {
+    locations() {
+      return this.$store.state.locations;
+    },
+  },
+
   components: {
     TruckStopInfo,
     FilterPage,
@@ -45,18 +52,50 @@ export default {
     openFilterPage() {
       this.$store.commit('filterDetails')
     },
-    openTruckStopInfo() {
-      this.$store.commit('truckStopInfo')
+    detailsPageCall(location){
+      this.$store.commit('selectedLocation', location)
+    },
+    goBackToMain() {
+      this.$store.commit("truckStopsBack")
     }
   }
 };
 </script>
 
 <style scoped>
+
+
+
+
+
+.truck-stops-pane::-webkit-scrollbar {
+  width: 11px;
+  
+}
+/* 
+.truck-stops-pane {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+} */
+
+.truck-stops-pane::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+  
+}
+
+.truck-stops-pane::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+  background: #969696;
+}
 .truck-stops-pane {
   display: flex;   
   /* flex-direction: row; */
+  
   position: absolute;
+  flex-direction: column;
+  overflow-y: auto;
   background-color: hsla(342, 87%, 58%, 0.95);
   border-radius: 20px;
   margin: 5px 5px;
@@ -65,9 +104,15 @@ export default {
   top: 0%;
   left: 0%;
 }
+
 .truck-stop-details {
+  box-sizing: border-box;
+  padding: 15px;
   display: flex;    
   flex-direction: row;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
+  height: 250px;
+  width: 100%;
   
 }
 
@@ -94,7 +139,7 @@ export default {
   justify-content: space-between;
 }
 
-button {
+.filter-button {
   position: absolute;
   border-radius: 50%;
   /* background-color: #bbb; */
