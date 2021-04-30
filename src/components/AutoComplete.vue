@@ -64,6 +64,7 @@ export default {
       this.arrowCounter = -1;
       this.isOpen = false;
       this.$store.commit("setLocation", this.search);
+      this.$store.dispatch("loadMarkers");
       this.$store.commit("zoomOnState");
     },
 

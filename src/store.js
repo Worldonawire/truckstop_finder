@@ -16,10 +16,8 @@ export default new Vuex.Store({
     zoom: 5,
     filterPage: false,
     detailsPage: false,
-    selectedTruckStop: {}
-   
+    selectedTruckStop: {},
   },
-
 
   mutations: {
     setLocation(state, payload) {
@@ -29,8 +27,7 @@ export default new Vuex.Store({
     setLocations(state, locations) {
       state.locations = locations;
     },
-
-     
+         
     zoomOnState(state) {
       state.center = usStateCoords[state.clientLocation];
       state.zoom = 7;
@@ -43,8 +40,18 @@ export default new Vuex.Store({
       state.detailsPage = true;
       state.selectedTruckStop = payload;      
     },
-    truckStopsBack(){
-      state.zoomOnStateToggle = false;
+    truckStopsBack(state){
+      state =  {
+        locations: [],
+        zoomOnStateToggle: false,
+        clientLocation: "",
+        availableTruckstops: [], 
+        center: { lat: 39.5, lng: -98.35 },
+        zoom: 5,
+        filterPage: false,
+        detailsPage: false,
+        selectedTruckStop: {}
+      }
     },
     
   },

@@ -3,7 +3,7 @@
   <div>
     <div class="truck-stops-pane">
     <div v-if="this.$store.state.detailsPage === false">
-      <div class="truck-stop-details" v-for="location in locations" :key="location.name" @click='detailsPageCall(location)'>
+      <button class="truck-stop-details" v-for="location in locations" :key="location.name" @click='detailsPageCall(location)'>
         <div class="keyDetails">
           <h1>{{location.name + " Truck Stop"}}</h1>
             <h2>{{location.address}}</h2>
@@ -14,7 +14,7 @@
           <div class="payments">icon2</div>
           <div class="restaurants">icon3</div>
         </div>
-      </div>
+      </button>
     </div>
     <TruckStopInfo v-if="this.$store.state.detailsPage === true"
       :data="truckstopData"
@@ -22,7 +22,8 @@
     />
     </div>
      <button class="filter-button" @click="openFilterPage"></button>
-     <button class="go-back-button" @click="goBackToMain"></button>
+     <button id="go-back-from-list-button" @click="goBackToMain"></button>
+     <button id="go-back-from-details-button"></button>
     <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
   </div>
 </template>
@@ -53,7 +54,7 @@ export default {
       this.$store.commit('filterDetails')
     },
     detailsPageCall(location){
-      this.$store.commit('selectedLocation', location)
+      this.$store.commit('detailsPageCall', location)
     },
     goBackToMain() {
       this.$store.commit("truckStopsBack")
@@ -146,9 +147,19 @@ export default {
   background-color: hsla(342, 87%, 58%, 0.95);
   border: none;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
-  height: 50px;
-  width: 50px;
+  height: 3vw;
+  width: 3vw;
   left: 90%;
   top: 10%;
 }
+
+#go-back-from-list-button, #go-back-from-details-button {
+  display: block;
+  border-radius: 50%;
+  height: 3vw;
+  width: 3vw;
+  left: 90%;
+  top: 10%;
+  z-index: 2;
+  }
 </style>
