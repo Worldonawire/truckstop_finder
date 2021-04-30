@@ -7,12 +7,25 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     locations: [],
+    zoomOnStateToggle: false,
+    clientLocation: "",
   },
+
   mutations: {
+    setLocation(state, payload) {
+      state.clientLocation = payload;
+      console.log("THIS IS THE CLIENTS STATE", state.clientLocation);
+    },
+
     setLocations(state, locations) {
       state.locations = locations;
     },
+
+    zoomOnState(state) {
+      state.zoomOnStateToggle = true;
+    },
   },
+
   actions: {
     async loadMarkers({ commit }) {
       try {
