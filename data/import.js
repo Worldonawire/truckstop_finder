@@ -3,6 +3,7 @@ const db = require("../server/knex.js");
 
 const seedDatabase = async () => {
   try {
+    await db("locations").del();
     const locations = JSON.parse(fs.readFileSync("./data/locations.json"));
     for (const location of locations) {
       const name = location.PreferredName;
@@ -46,7 +47,7 @@ const seedDatabase = async () => {
         return element.Concept.Name;
       });
 
-      const result = await db("locations").insert({
+      await db("locations").insert({
         name,
         type,
         state,
@@ -58,7 +59,6 @@ const seedDatabase = async () => {
         payments,
         restaurants,
       });
-      console.log(result);
     }
   } catch (err) {
     console.error("Error inserting records", err);

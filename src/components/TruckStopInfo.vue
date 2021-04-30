@@ -1,5 +1,5 @@
 <template>
-  <div className="truck-stop-info"></div>
+  <div class="truck-stop-info"></div>
 </template>
 
 <script>
@@ -13,4 +13,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.truck-stop-info {
+  position: absolute;
+  background-color: blue;
+  height: 90vh;
+  width: 90%;
+  top: 0px;
+}
+</style>

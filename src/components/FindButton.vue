@@ -92,7 +92,12 @@ export default {
 
   methods: {
     zoomToState() {
+      this.getLocations()
       this.$store.commit("zoomOnState");
+    },
+
+    getLocations() {
+      this.$store.dispatch("loadMarkers");
     },
   },
 };
