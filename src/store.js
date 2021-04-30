@@ -65,6 +65,7 @@ export default new Vuex.Store({
           amenities: location.amenities,
           payments: location.payments,
           restaurants: location.restaurants,
+          type: location.type,
           defaultAnimation: 2,
         }));
         commit("setLocations", markers);
