@@ -2,6 +2,7 @@
 false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
 <template>
   <div class="map-container">
+   
     <GmapMap
       :zoom="this.$store.state.zoom"
       :center="this.$store.state.center"
@@ -22,6 +23,7 @@ false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
     />
     <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
     <HomeButton />
+     <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
   </div>
 </template>
 
@@ -30,6 +32,7 @@ import { gmapApi } from "vue2-google-maps";
 import FindButton from "./FindButton.vue";
 import TruckStops from "./TruckStops.vue";
 import HomeButton from "./HomeButton";
+import FilterPage from "./FilterPage.vue";
 
 export default {
   name: "Map",
@@ -37,6 +40,7 @@ export default {
     FindButton,
     TruckStops,
     HomeButton,
+    FilterPage,
   },
 
   computed: {
@@ -56,7 +60,7 @@ export default {
 </script>
 <style scoped>
 .map-container {
-  position: relative;
   display: flex;
+  position: relative;
 }
 </style>

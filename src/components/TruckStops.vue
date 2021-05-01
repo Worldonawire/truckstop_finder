@@ -24,13 +24,12 @@
      <button class="filter-button" @click="openFilterPage"></button>
      <button id="go-back-from-list-button" @click="goBackToMain"></button>
      <button id="go-back-from-details-button"></button>
-    <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
+    
   </div>
 </template>
 
 <script>
 import TruckStopInfo from "./TruckStopInfo.vue";
-import FilterPage from "./FilterPage.vue";
 import { gmapApi } from "vue2-google-maps";
 
 export default {
@@ -47,7 +46,6 @@ export default {
 
   components: {
     TruckStopInfo,
-    FilterPage,
   },
   methods: {
     openFilterPage() {
@@ -162,4 +160,14 @@ export default {
   top: 10%;
   z-index: 2;
   }
+  /* .filter-results {
+  position: absolute;
+  background-color: black;
+  height: 95vh;
+  width: 95%;
+  top: 0px;
+  z-index: 3;
+
+  
+} */
 </style>
