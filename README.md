@@ -61,6 +61,8 @@ Wifi
 ATM
 INFO
 
+
+
 ##### Jane Harper
 24 - Female
 Lives in suburbs NY
@@ -87,6 +89,7 @@ Hippies.
 ###### Hobbies:
 She is part of a movie club
 She likes fitness
+
 
 
 ##### Ella Vader
