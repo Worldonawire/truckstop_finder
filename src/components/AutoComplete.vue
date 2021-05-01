@@ -89,7 +89,7 @@ export default {
     setResult(result) {
       this.search = result;
       this.isOpen = false;
-      this.$store.commit("setLocation", this.search);
+      this.$store.commit("setLocation", this.search.toLowerCase());
     },
 
     handleClickOutside(event) {

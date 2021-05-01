@@ -23,8 +23,8 @@
     </div>
     <div id="buttons-container">
      <button id="filter-button" @click="openFilterPage">Filter</button>
-     <button id="go-back-from-list-button" @click="goBackToMain">Back</button>
-     <button id="go-back-from-details-button">Back</button>
+     <button class="go-back-from-list-button" @click="goBackToMain"></button>
+     <button class="go-back-from-details-button"></button>
     </div>
     <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
   </div>
@@ -84,6 +84,16 @@ export default {
   width: 3vw;
 }
 
+.go-back-from-list-button, .go-back-from-details-button {
+  background: url("../assets/icons/back-button.png") no-repeat;
+  cursor: pointer;
+  border:none;
+  width: 66px;
+  height: 66px;
+  position: absolute;
+  right: 110%;
+  filter: invert(100%);
+}
 
 .truck-stops-pane::-webkit-scrollbar {
   width: 11px;
@@ -156,13 +166,4 @@ export default {
   justify-content: space-between;
 }
 
-#go-back-from-list-button, #go-back-from-details-button {
-  display: block;
-  border-radius: 50%;
-  height: 3vw;
-  width: 3vw;
-  left: 90%;
-  top: 10%;
-  z-index: 2;
-  }
 </style>
