@@ -1,25 +1,45 @@
 <template>
   <div class="truck-stop-info">
-  <div class="info">
-    <h1>{{this.$store.state.chosenTruckstop.name}} 
-      - {{this.$store.state.chosenTruckstop.state}}</h1>
-    <h2></h2>
-    <h2>{{this.$store.state.chosenTruckstop.address}}</h2>
-    <h2>{{this.$store.state.chosenTruckstop.type}}</h2>
-  </div>
+    <div class="info">
+      <h1>
+        {{ this.$store.state.chosenTruckstop.name }} -
+        {{ this.$store.state.chosenTruckstop.state }}
+      </h1>
+      <h2></h2>
+      <h2>{{ this.$store.state.chosenTruckstop.address }}</h2>
+      <h2>{{ this.$store.state.chosenTruckstop.type }}</h2>
+    </div>
 
-  <div class="amenities">
-    <h3>{{this.$store.state.chosenTruckstop.amenities}}</h3>
-  </div>
+    <div class="amenities">
+      <img
+        class="amenities-icon"
+        v-for="(path, index) in amenitiesImages"
+        :key="index"
+        :src="path"
+        alt="Amenities-icon"
+      />
+    </div>
 
-  <div class="payments">
-    <h3>{{this.$store.state.chosenTruckstop.payments}}</h3>
-  </div>
+    <div class="payments">
+      <img
+        class="amenities-icon"
+        v-for="(path, index) in paymentsImages"
+        :key="index"
+        :src="path"
+        alt="Amenities-icon"
+      />
+    </div>
 
-  <div class="restaurants">
-    <h3>{{this.$store.state.chosenTruckstop.restaurants}}</h3>
+    <div class="restaurants">
+      <img
+        class="amenities-icon"
+        v-for="(path, index) in restaurantsImages"
+        :key="index"
+        :src="path"
+        alt="Amenities-icon"
+      />
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -27,9 +47,26 @@ export default {
   name: "TruckStopInfo",
   components: {},
 
-  methods: {
+  data() {
+    return {
+      amenitiesImages: [],
+      paymentsImages: [],
+      restaurantsImages: [],
+    };
+  },
 
-  }
+  mounted() {
+    this.getIcon();
+  },
+
+  methods: {
+    getIcon() {
+      for (let item of this.$store.state.chosenTruckstop.amenities) {
+        this.amenitiesImages.push(require(`@/assets/icons/${item}.png`));
+      }
+      console.log(this.amenitiesImages);
+    },
+  },
 };
 </script>
 
@@ -50,8 +87,23 @@ export default {
   border: solid black 0.5em;
 }
 .amenities {
+  display: grid;
   margin-top: 10px;
   background-color: rgb(201, 46, 46);
+  border: solid 0.2em;
+  grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+  grid-auto-rows: 50px;
+  gap: 10px, 10px;
+}
+
+.amenities-icon {
+  margin-top: 5px;
+  height: min(100%, 40px);
+  width: min(100%, 40px);
+}
+
+.amenities-icon:hover {
+  transform: scale(1.1);
 }
 
 .payments {
