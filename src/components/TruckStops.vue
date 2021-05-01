@@ -36,9 +36,7 @@ export default {
   name: "TruckStops",
   computed: {
     google: gmapApi,
-  },
 
-  computed: {
     locations() {
       return this.$store.state.locations;
     },
@@ -52,6 +50,7 @@ export default {
       this.$store.commit('filterDetails')
     },
     detailsPageCall(location){
+      this.$store.commit('selectPhoto')
       this.$store.commit('detailsPageCall', location)
     },
     goBackToMain() {

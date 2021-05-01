@@ -1,16 +1,39 @@
+
 <template>
   <div class="filter-page">
+    <!-- <img src="../assets/images/photo1.jpg"> -->
+    
+    <!-- <img :src="this.$store.state.selectedTestPhoto"> -->
     <form>
       <p>Payment Types:</p>
-      <label for="credit-cards">All Major Credit Cards</label>
-      <input id="credit-cards" name="payment" type="checkbox" value="All Major Credit Cards">
+      <!-- <form id="searchForm" @submit.prevent="performFilter">
+      <label for="Name">Name: </label>
+      <input type="text" id="Name" v-model="form.name">
+
+      <label for="Age">Age: </label>
+      <input type="text" id="Age" v-model="form.age">
+
+      <label for="Address">Address: </label>
+      <input type="text" id="Address" v-model="form.address">
+
+      <button type="submit">Submit</button> -->
+    <!-- </form> -->
+      
+      <!-- <label for="Cash Accepted">Cash Accepted</label>
+      <input @input="submitData" id="Cash Accepted" name="payment" type="checkbox" :value="cashAccepted">
+      <label for="All Major Credit Carsd">All Major Credit Cards Accepted</label>
+      <input @input="submitData" id="All Major Credit Cards" name="payment" type="checkbox" :value="allMajorCreditCards"> -->
+      
+      
+      <!-- <label for="credit-cards">All Major Credit Cards</label> -->
+      <!-- <input v-model="submitPage" id="credit-cards" name="payment" type="checkbox" value="All Major Credit Cards">
       <br>
-      <label for="cash">Cash Accepted</label>
-      <input id="Cash Accepted" name="payment" type="checkbox" value="Cash Accepted">
+      <label for="Cash Accepted">Cash Accepted</label>
+      <input v-model="submitPage" id="Cash Accepted" name="payment" type="checkbox" value="Cash Accepted">
       <br>
       <br>
-      <br>
-      <p>Truckstop Amenities</p>
+      <br> -->
+      <!-- <p>Truckstop Amenities</p>
       <label for="Private Showers">Shower Facilities</label>
       <input id="Private Showers" name="amenities" type="checkbox" value="Private Showers">
       <br>
@@ -60,8 +83,8 @@
       <input id="Loyalty Program" name="truck-amenities" type="checkbox" value="Loyalty Program">
       <br>
       <br>
-      <br>
-      <input type="submit">
+      <br> -->
+      <!-- <input type="submit" value="submit"> -->
       <br>
       <br>
       <br>
@@ -74,9 +97,18 @@ export default {
   name: "FilterPage",
   components: {},
 
+
   mounted() {
-    // this.getLocations();
   },
+
+  methods: {
+    submitData(e) {
+      console.log("data >>>>", e.target.value)
+      this.$store.commit('submitData', e.target.value)
+      
+    
+    }
+  }
  
 };
 </script>
@@ -89,4 +121,6 @@ export default {
   width: 95%;
   color: white;  
 }
+
+
 </style>
