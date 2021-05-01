@@ -1,5 +1,4 @@
 const usStateCoords = {
-  AK: {lat: 63.588753, lng: -154.493062},
   AL: {lat: 32.318231, lng: -86.902298},
   AR: {lat: 35.20105, lng: -91.831833},
   AZ: {lat: 34.048928, lng: -111.093731},
@@ -57,7 +56,6 @@ const usStateCoords = {
 
 const stateInitials = {
 Alabama:	"AL",
-Alaska:	"AK",
 Arizona:	"AZ",
 Arkansas:	"AR",
 California:	"CA",

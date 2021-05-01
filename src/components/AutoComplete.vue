@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import { stateInitials } from "../utils/stateCoords";
+import _ from "lodash"
+
 export default {
   name: "AutoComplete",
   props: {
@@ -60,18 +63,21 @@ export default {
       if (this.arrowCounter !== -1) {
         this.search = this.results[this.arrowCounter];
       }
-
-      this.arrowCounter = -1;
-      this.isOpen = false;
-      this.$store.commit("setLocation", this.search);
-      this.$store.dispatch("loadMarkers");
-      this.$store.commit("zoomOnState");
+      if (stateInitials[_.capitalize(this.search)]) {
+        this.arrowCounter = -1;
+        this.isOpen = false;
+        this.$store.commit("setLocation", _.capitalize(this.search));
+        this.$store.dispatch("loadMarkers");
+        this.$store.commit("zoomOnState");
+      }
     },
 
     onChange() {
       this.filterResults();
-      this.$store.commit("setLocation", this.search);
       this.isOpen = true;
+      if (stateInitials[_.capitalize(this.search)]) {
+        this.$store.commit("setLocation", _.capitalize(this.search));
+      }
     },
 
     filterResults() {
@@ -105,13 +111,15 @@ export default {
 </script>
 
 <style scoped>
+
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+}
+
 input {
-  position: absolute;
-  height: 5vh;
-  width: 10vw;
-  left: 46%;
-  top: 60%;
-  padding: 7px;
+  margin: auto;
+  padding: 10px;
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -119,16 +127,11 @@ input {
 }
 
 .dropdown-contents {
-  top: 66%;
-  left: 46%;
-  padding: 0;
-  margin: 0;
+  margin-top: 0%;
+  margin-left: 9%;
   border: 1px solid #eeeeee;
   height: 120px;
-  min-height: 1em;
-  max-height: 8em;
-  width: 214px;
-  position: absolute;
+  width: 55%;
   overflow: auto;
   outline: none;
   border: none;
@@ -149,26 +152,17 @@ input {
   color: white;
 }
 
+
 @media screen and (min-width: 360px) and (max-width: 374px) {
   input {
-    position: absolute;
-    height: 20px;
-    width: 100px;
-    left: 38.5%;
-    top: 55%;
+    padding: 5px;
   }
 
   .dropdown-contents {
-    top: 60%;
-    left: 40%;
-    padding: 0;
-    margin: 0;
     border: 1px solid #eeeeee;
+    margin-left: -10%;
     height: 120px;
-    min-height: 1em;
-    max-height: 8em;
-    width: 100px;
-    position: absolute;
+    width: 140px;
     overflow: auto;
     outline: none;
     border: none;
@@ -177,24 +171,14 @@ input {
 
 @media screen and (min-width: 375px) and (max-width: 390px) {
   input {
-    position: absolute;
-    height: 20px;
-    width: 100px;
-    left: 38.5%;
-    top: 56%;
+    padding: 5px
   }
 
   .dropdown-contents {
-    top: 62%;
-    left: 40%;
-    padding: 0;
-    margin: 0;
     border: 1px solid #eeeeee;
+    margin-left: -10%;
     height: 120px;
-    min-height: 1em;
-    max-height: 8em;
-    width: 100px;
-    position: absolute;
+    width: 140px;
     overflow: auto;
     outline: none;
     border: none;
@@ -203,24 +187,14 @@ input {
 
 @media screen and (min-width: 400px) and (max-width: 420px) {
   input {
-    position: absolute;
-    height: 10px;
-    width: 100px;
-    left: 37%;
-    top: 56%;
+    padding: 5px;
   }
 
   .dropdown-contents {
-    top: 60%;
-    left: 38.5%;
-    padding: 0;
-    margin: 0;
+    margin-left: -10%;
     border: 1px solid #eeeeee;
     height: 120px;
-    min-height: 1em;
-    max-height: 8em;
-    width: 100px;
-    position: absolute;
+    width: 140px;
     overflow: auto;
     outline: none;
     border: none;
@@ -229,24 +203,13 @@ input {
 
 @media screen and (min-width: 768px) and (max-width: 900px) {
   input {
-    position: absolute;
-    height: 40px;
-    width: 200px;
-    left: 38.5%;
-    top: 57%;
+    padding: 20px;
   }
 
   .dropdown-contents {
-    top: 63%;
-    left: 39%;
-    padding: 0;
-    margin: 0;
     border: 1px solid #eeeeee;
     height: 120px;
-    min-height: 1em;
-    max-height: 8em;
-    width: 210px;
-    position: absolute;
+    width: 175px;
     overflow: auto;
     outline: none;
     border: none;

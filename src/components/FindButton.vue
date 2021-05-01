@@ -18,7 +18,6 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
   <div>
     <button class="btn" type="button" @click="zoomToState">
       <span>Find Truck Stops</span>
-    </button>
     <AutoComplete
       :items="[
         'Alabama',
@@ -56,13 +55,10 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'New York',
         'North Carolina',
         'North Dakota',
-        'Northern Mariana Islands',
         'Ohio',
         'Oklahoma',
         'Oregon',
-        'Palau',
         'Pennsylvania',
-        'Puerto Rico',
         'Rhode Island',
         'South Carolina',
         'South Dakota',
@@ -70,7 +66,6 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'Texas',
         'Utah',
         'Vermont',
-        'Virgin Island',
         'Virginia',
         'Washington',
         'West Virginia',
@@ -78,11 +73,13 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'Wyoming',
       ]"
     />
+    </button>
   </div>
 </template>
 
 <script>
 import AutoComplete from "./AutoComplete.vue";
+import { stateInitials } from "../utils/stateCoords"
 
 export default {
   name: "FindButton",
@@ -92,8 +89,10 @@ export default {
 
   methods: {
     zoomToState() {
-      this.getLocations();
-      this.$store.commit("zoomOnState");
+      if (this.$store.state.clientLocation !== "") {
+        this.getLocations();
+        this.$store.commit("zoomOnState");
+      }
     },
 
     getLocations() {
@@ -105,24 +104,29 @@ export default {
 
 <style scoped>
 button {
-  position: absolute;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: 38%;
+  left: 40%;
   border-radius: 50%;
   /* background-color: #bbb; */
   background-color: hsla(342, 87%, 58%, 0.95);
   border: none;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
-  height: 23vw;
-  width: 23vw;
-  left: 41%;
-  top: 33%;
+  height: 300px;
+  width: 300px;
+
 }
 
 span {
+  margin-top: 8vh;
+  margin-bottom: 2vh;
   font-weight: bold;
-  font-size: 300%;
+  font-size: 45px;
 }
 
-/* @media screen and (min-width: 360px) and (max-width: 767px) {
+@media screen and (min-width: 360px) and (max-width: 767px) {
   button {
     height: 200px;
     width: 200px;
@@ -131,7 +135,7 @@ span {
   }
 
   span {
-    font-size: 30px;
+    font-size: 23px;
   }
 }
 
@@ -146,5 +150,5 @@ span {
   span {
     font-size: 50px;
   }
-} */
+}
 </style>

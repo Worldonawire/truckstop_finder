@@ -54,9 +54,12 @@ export default {
   },
 };
 </script>
-<style scoped>
+
+<style>
+
 .map-container {
-  position: relative;
   display: flex;
+  position: relative;
 }
+
 </style>
