@@ -21,7 +21,6 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
     <AutoComplete
       :items="[
         'Alabama',
-        'Alaska',
         'Arizona',
         'Arkansas',
         'California',
@@ -31,7 +30,6 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'District of Columbia',
         'Florida',
         'Georgia',
-        'Hawaii',
         'Idaho',
         'Illinois',
         'Indiana',
@@ -49,7 +47,6 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'Montana',
         'Nebraska',
         'Nevada',
-        'New Hampshire',
         'New Jersey',
         'New Mexico',
         'New York',

@@ -60,13 +60,16 @@ export default {
     },
 
     onEnter() {
+
+      console.log("this search", this.search)
+      console.log("capitalized", _.capitalize("new jersey"))
       if (this.arrowCounter !== -1) {
         this.search = this.results[this.arrowCounter];
       }
-      if (stateInitials[_.capitalize(this.search)]) {
+      if (stateInitials[this.search.toLowerCase()]) {
         this.arrowCounter = -1;
         this.isOpen = false;
-        this.$store.commit("setLocation", _.capitalize(this.search));
+        this.$store.commit("setLocation", this.search.toLowerCase());
         this.$store.dispatch("loadMarkers");
         this.$store.commit("zoomOnState");
       }
@@ -76,7 +79,7 @@ export default {
       this.filterResults();
       this.isOpen = true;
       if (stateInitials[_.capitalize(this.search)]) {
-        this.$store.commit("setLocation", _.capitalize(this.search));
+        this.$store.commit("setLocation", this.search.toLowerCase());
       }
     },
 
