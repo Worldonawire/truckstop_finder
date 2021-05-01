@@ -22,21 +22,21 @@
 
     <div class="payments">
       <img
-        class="amenities-icon"
+        class="payments-icon"
         v-for="(path, index) in paymentsImages"
         :key="index"
         :src="path"
-        alt="Amenities-icon"
+        alt="payments-icon"
       />
     </div>
 
     <div class="restaurants">
       <img
-        class="amenities-icon"
+        class="restaurants-icon"
         v-for="(path, index) in restaurantsImages"
         :key="index"
         :src="path"
-        alt="Amenities-icon"
+        alt="restaurants-icon"
       />
     </div>
   </div>
@@ -64,7 +64,15 @@ export default {
       for (let item of this.$store.state.chosenTruckstop.amenities) {
         this.amenitiesImages.push(require(`@/assets/icons/${item}.png`));
       }
+      for (let item of this.$store.state.chosenTruckstop.payments) {
+        this.paymentsImages.push(require(`@/assets/icons/${item}.png`));
+      }
+      for (let item of this.$store.state.chosenTruckstop.restaurants) {
+        this.restaurantsImages.push(require(`@/assets/icons/${item}.png`));
+      }
       console.log(this.amenitiesImages);
+      console.log(this.paymentsImages);
+      console.log(this.restaurantsImages);
     },
   },
 };
@@ -91,9 +99,29 @@ export default {
   margin-top: 10px;
   background-color: rgb(201, 46, 46);
   border: solid 0.2em;
-  grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   grid-auto-rows: 50px;
-  gap: 10px, 10px;
+  gap: 5px, 5px;
+}
+
+.payments {
+  display: grid;
+  margin-top: 10px;
+  background-color: rgb(201, 46, 46);
+  border: solid 0.2em;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-auto-rows: 50px;
+  gap: 5px, 5px;
+}
+
+.restaurants {
+  display: grid;
+  margin-top: 10px;
+  background-color: rgb(201, 46, 46);
+  border: solid 0.2em;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-auto-rows: 50px;
+  gap: 5px, 5px;
 }
 
 .amenities-icon {
@@ -103,6 +131,26 @@ export default {
 }
 
 .amenities-icon:hover {
+  transform: scale(1.1);
+}
+
+.payments-icon {
+  margin-top: 5px;
+  height: min(100%, 40px);
+  width: min(100%, 40px);
+}
+
+.payments-icon:hover {
+  transform: scale(1.1);
+}
+
+.restaurants-icon {
+  margin-top: 5px;
+  height: min(100%, 50px);
+  width: min(100%, 50px);
+}
+
+.restaurants-icon:hover {
   transform: scale(1.1);
 }
 
