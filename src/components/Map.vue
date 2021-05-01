@@ -21,7 +21,6 @@ false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
       v-if="this.$store.state.zoomOnStateToggle === false"
     />
     <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
-    <HomeButton />
   </div>
 </template>
 
@@ -29,14 +28,12 @@ false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
 import { gmapApi } from "vue2-google-maps";
 import FindButton from "./FindButton.vue";
 import TruckStops from "./TruckStops.vue";
-import HomeButton from "./HomeButton";
 
 export default {
   name: "Map",
   components: {
     FindButton,
     TruckStops,
-    HomeButton,
   },
 
   computed: {

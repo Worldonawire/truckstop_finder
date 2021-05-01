@@ -21,9 +21,11 @@
       :message="this.$store.state.selectedTruckstop"
     />
     </div>
-     <button class="filter-button" @click="openFilterPage"></button>
-     <button id="go-back-from-list-button" @click="goBackToMain"></button>
-     <button id="go-back-from-details-button"></button>
+    <div id="buttons-container">
+     <button id="filter-button" @click="openFilterPage">Filter</button>
+     <button id="go-back-from-list-button" @click="goBackToMain">Back</button>
+     <button id="go-back-from-details-button">Back</button>
+    </div>
     <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
   </div>
 </template>
@@ -65,8 +67,22 @@ export default {
 
 <style scoped>
 
+#buttons-container {
+  display: flex;
+  position: absolute;
+  top: 1%;
+  right: 4%;  
+}
 
-
+#filter-button {
+  border-radius: 50%;
+  /* background-color: #bbb; */
+  background-color: hsla(342, 87%, 58%, 0.95);
+  border: none;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
+  height: 3vw;
+  width: 3vw;
+}
 
 
 .truck-stops-pane::-webkit-scrollbar {
@@ -138,19 +154,6 @@ export default {
  display: flex;
  margin: 10px;
   justify-content: space-between;
-}
-
-.filter-button {
-  position: absolute;
-  border-radius: 50%;
-  /* background-color: #bbb; */
-  background-color: hsla(342, 87%, 58%, 0.95);
-  border: none;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
-  height: 3vw;
-  width: 3vw;
-  left: 90%;
-  top: 10%;
 }
 
 #go-back-from-list-button, #go-back-from-details-button {
