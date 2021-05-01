@@ -16,15 +16,12 @@
         </div>
       </button>
     </div>
-    <TruckStopInfo v-if="this.$store.state.detailsPage === true"
-      :data="truckstopData"
-      :message="this.$store.state.selectedTruckstop"
-    />
+    <TruckStopInfo v-if="this.$store.state.detailsPage === true" />
     </div>
     <div id="buttons-container">
      <button id="filter-button" @click="openFilterPage">Filter</button>
-     <button class="go-back-from-list-button" @click="goBackToMain"></button>
-     <button class="go-back-from-details-button"></button>
+     <button class="go-back-from-list-button" @click="goBackToMain" v-if="!this.$store.state.detailsPage"></button>
+     <!-- <button class="go-back-from-details-button"></button> -->
     </div>
     <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
   </div>
@@ -59,6 +56,7 @@ export default {
       this.$store.commit('detailsPageCall', location)
     },
     goBackToMain() {
+      console.log("I AM HERE")
       this.$store.commit("truckStopsBack")
     }
   }

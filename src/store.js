@@ -16,7 +16,7 @@ export default new Vuex.Store({
     zoom: 5,
     filterPage: false,
     detailsPage: false,
-    selectedTruckStop: {},
+    chosenTruckstop: {}
   },
 
   mutations: {
@@ -37,21 +37,20 @@ export default new Vuex.Store({
       state.filterPage = true;
     },
     detailsPageCall(state, payload) {
+      state.chosenTruckstop = payload
       state.detailsPage = true;
-      state.selectedTruckStop = payload;      
     },
     truckStopsBack(state){
-      state =  {
-        locations: [],
-        zoomOnStateToggle: false,
-        clientLocation: "",
-        availableTruckstops: [], 
-        center: { lat: 39.5, lng: -98.35 },
-        zoom: 5,
-        filterPage: false,
-        detailsPage: false,
-        selectedTruckStop: {}
-      }
+      console.log("iajsdpoijaspo")
+      state.locations = [];
+      state.zoomOnStateToggle = false;
+      state.clientLocation = "";
+      state.availableTruckstops = [];
+      state.center = { lat: 39.5, lng: -98.35 };
+      state.zoom = 5;
+      state.filterPage = false;
+      state.detailsPage = false;
+      state.chosenTruckstop = {};
     },
     
   },

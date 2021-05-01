@@ -1,15 +1,19 @@
 <template>
-  <div class="truck-stop-info"></div>
+  <div class="truck-stop-info">
+    {{this.$store.state.chosenTruckstop}}
+  </div>
 </template>
 
 <script>
 export default {
   name: "TruckStopInfo",
-  components: {},
 
-  mounted() {
-    // this.getLocations();
+  computed: {
+    selectedTruckstop() {
+      return this.$store.state.chosenTruckstop
+    }
   },
+
 };
 </script>
 
