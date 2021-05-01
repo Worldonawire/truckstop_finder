@@ -62,15 +62,7 @@ The /api endpoint is available for querying the database.
 
 
 
-## Accessing the API
-
-For accessing the API, utilize the following code
-
-```shell
-
-await.get("/api/? {INSERT QUERY} )
-
-```
+## Accessing the Frontend
 
 
 ## Contributing
