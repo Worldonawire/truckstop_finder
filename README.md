@@ -41,7 +41,7 @@ Here we used several technologies for providing the API server.
 After cloning the repo, to install depedencies:
 
 ```shell
-npm install [OR] yarn install
+npm install
 ```
 
 
