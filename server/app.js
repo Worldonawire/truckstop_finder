@@ -1,5 +1,5 @@
 const express = require("express");
-// const Knex = require("knex");
+const Knex = require("knex");
 const path = require("path");
 const db = require("./knex");
 
@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api", (req, res) => {
+  
   const queryKey = Object.keys(req.query);
   const queryValue = req.query[queryKey];
 
@@ -35,20 +36,20 @@ app.get("/api", (req, res) => {
         console.log("Routing to 'State'...");
         state(queryValue);
         break;
-      // case "amenities":
-      //   console.log("Routing to 'Amenities'...");
-      //   amenities(queryValue);
-      //   break;
-      // case "payments":
-      //   console.log("Routing to 'Payments'...");
-      //   payments(queryValue);
-      //   break;
-      // case "restaurants":
-      //   console.log("Routing to 'Restaurants'...");
-      //   restaurants(queryValue);
-      //   break;
+      case "amenities":
+        console.log("Routing to 'Amenities'...");
+        amenities(queryValue);
+        break;
+      case "payments":
+        console.log("Routing to 'Payments'...");
+        payments(queryValue);
+        break;
+      case "restaurants":
+        console.log("Routing to 'Restaurants'...");
+        restaurants(queryValue);
+        break;
       default:
-        console.log("Routing failed ");
+        console.log("Switch failed ");
         res.status(400).end();
         break;
     }
@@ -89,121 +90,58 @@ app.get("/api", (req, res) => {
     }
   }
 
-  // async function amenities(queryValue) {
-  //   queryValue = Array.from(queryValue, (val) => val).join("");
-  //   queryValue = queryValue.substring(1, queryValue.length - 1);
-  //   queryArray = queryValue.split(",");
+  async function amenities(queryValue) {
 
-  //   console.log(queryArray);
+    // passed argument is a string
+    // converts passed argument into an array of strings
+    queryValue = Array
+                .from(queryValue, (val) => val)
+                .join("")
+    queryValue = queryValue.substring(1, queryValue.length-1);
+    queryArray = queryValue.split(',');
 
-  //   const numIterations = queryArray.length;
+    console.log(queryArray);
+    const numIterations = queryArray.length;
+    let mutatedQuery =  `SELECT * FROM locations
+    WHERE \'${queryKey}\' = \'${queryArray[0]}`
 
-  //   // TODO handle this case better than with a switch
-  //   // handle the different amenities cases
-  //   // switch (numIterations) {
-  //   //   case 1:
-  //     try {
-  //       const allMatches = await db("locations")
-  //       .where("amenities", queryArray[0]);
+    for (let i=1; i<numIterations; i++) {
+      mutatedQuery += ` AND ${queryKey} = ${queryArray[i]}`
+    }
+    mutatedQuery += ';';
 
-  //       res.status(200);
-  //       res.send(allMatches);
-  //     } catch (e) {
-  //       console.log(e);
-  //       res.status(400).end();
-  //     }
-  //     break;
-  //   case 2:
-  //     try {
-  //       const allMatches = await db("locations")
-  //       .where("amenities", queryArray[0])
-  //       .andWhere("amenities", queryArray[1]);
+    try {
+      allMatches = await db.raw(mutatedQuery);
 
-  //       res.status(200);
-  //       res.send(allMatches);
-  //   } catch (e) {
-  //     console.log(e);
-  //     res.status(400).end();
-  //   }
-  //     break;
-  //   case 3:
-  //     try {
-  //       const allMatches = await db("locations")
-  //       .where("amenities", queryArray[0])
-  //       .andWhere("amenities", queryArray[1])
-  //       .andWhere("amenities", queryArray[2]);
-  //       res.status(200);
-  //       res.send(allMatches);
-  //   } catch (e) {
-  //     console.log(e);
-  //     res.status(400).end();
-  //   }
-  //     break;
-  //   default:
-  //     console.log("amentities query invalid");
-  //     res.status(400).end();
-  //     break;
-  // }
+      res.status(200);
+      res.send(allMatches);
+    } catch (e) {
+      console.log(e);
+      res.status(400).end();
+    }
+  }
 
-  // try {
-  //   const allMatches = await db("locations").where("city", queryValue);
-  //   res.status(200);
-  //   res.send(allMatches);
-  // } catch (e) {
-  //   console.log(e);
-  //   res.status(400).end();
-  // }
+  async function payments(queryValue) {
+    try {
+      const allMatches = await db("locations").where("payments", queryValue);
+      res.status(200);
+      res.send(allMatches);
+    } catch (e) {
+      console.log(e);
+      res.status(400).end();
+    }
+  }
 
-  // passed argument is a string
-  // converts passed argument into an array of strings
-  // queryValue = Array
-  //             .from(queryValue, (val) => val)
-  //             .join("")
-  // queryValue = queryValue.substring(1, queryValue.length-1);
-  // queryArray = queryValue.split(',');
-
-  // console.log(queryArray);
-  // const numIterations = queryArray.length;
-  // let mutatedQuery =  `SELECT * FROM locations
-  // WHERE \'${queryKey}\' = \'${queryArray[0]}\'`
-
-  // for (let i=1; i<numIterations; i++) {
-  //   mutatedQuery += ` AND \'${queryKey}\' = \'${queryArray[0]}\'`
-  // }
-  // mutatedQuery += ';';
-
-  // console.log(mutatedQuery);
-
-  //   // try {
-  //   //   res.status(200);
-  //   //   res.send(await db.raw(mutatedQuery));
-  //   // } catch (e) {
-  //   //   console.log(e);
-  //   //   res.status(400).end();
-  //   // }
-  // }
-
-  // async function payments(queryValue) {
-  //   try {
-  //     const allMatches = await db("locations").where("payments", queryValue);
-  //     res.status(200);
-  //     res.send(allMatches);
-  //   } catch (e) {
-  //     console.log(e);
-  //     res.status(400).end();
-  //   }
-  // }
-
-  // async function restaurants(queryValue) {
-  //   try {
-  //     const allMatches = await db("locations").where("restaurants", queryValue);
-  //     res.status(200);
-  //     res.send(allMatches);
-  //   } catch (e) {
-  //     console.log(e);
-  //     res.status(400).end();
-  //   }
-  // }
+  async function restaurants(queryValue) {
+    try {
+      const allMatches = await db("locations").where("restaurants", queryValue);
+      res.status(200);
+      res.send(allMatches);
+    } catch (e) {
+      console.log(e);
+      res.status(400).end();
+    }
+  }
 });
 
 module.exports = app;
