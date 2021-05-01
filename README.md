@@ -68,7 +68,7 @@ For accessing the API, utilize the following code
 
 ```shell
 
-await.get("/api/? {INSERT QUERY}
+await.get("/api/? {INSERT QUERY} )
 
 ```
 
