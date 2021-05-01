@@ -86,7 +86,6 @@ export default {
 
   methods: {
     zoomToState() {
-      console.log(this.$store.state.clientLocation)
       if (this.$store.state.clientLocation !== "") {
         this.getLocations();
         this.$store.commit("zoomOnState");

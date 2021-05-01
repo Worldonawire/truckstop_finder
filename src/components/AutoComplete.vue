@@ -60,9 +60,6 @@ export default {
     },
 
     onEnter() {
-
-      console.log("this search", this.search)
-      console.log("capitalized", _.capitalize("new jersey"))
       if (this.arrowCounter !== -1) {
         this.search = this.results[this.arrowCounter];
       }
@@ -78,7 +75,7 @@ export default {
     onChange() {
       this.filterResults();
       this.isOpen = true;
-      if (stateInitials[_.capitalize(this.search)]) {
+      if (stateInitials[(this.search).toLowerCase()]) {
         this.$store.commit("setLocation", this.search.toLowerCase());
       }
     },
