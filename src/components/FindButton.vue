@@ -92,7 +92,7 @@ export default {
 
   methods: {
     zoomToState() {
-      this.getLocations()
+      this.getLocations();
       this.$store.commit("zoomOnState");
     },
 
@@ -111,8 +111,8 @@ button {
   background-color: hsla(342, 87%, 58%, 0.95);
   border: none;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
-  height: 400px;
-  width: 400px;
+  height: 23vw;
+  width: 23vw;
   left: 41%;
   top: 33%;
 }
@@ -122,7 +122,7 @@ span {
   font-size: 300%;
 }
 
-@media screen and (min-width: 360px) and (max-width: 767px) {
+/* @media screen and (min-width: 360px) and (max-width: 767px) {
   button {
     height: 200px;
     width: 200px;
@@ -146,5 +146,5 @@ span {
   span {
     font-size: 50px;
   }
-}
+} */
 </style>

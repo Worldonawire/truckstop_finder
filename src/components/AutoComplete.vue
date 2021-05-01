@@ -107,8 +107,8 @@ export default {
 <style scoped>
 input {
   position: absolute;
-  height: 40px;
-  width: 200px;
+  height: 5vh;
+  width: 10vw;
   left: 46%;
   top: 60%;
   padding: 7px;

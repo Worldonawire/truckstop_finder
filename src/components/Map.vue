@@ -2,13 +2,13 @@
 false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
 <template>
   <div class="map-container">
-    <GmapMap 
+    <GmapMap
       :zoom="this.$store.state.zoom"
       :center="this.$store.state.center"
       map-type-id="terrain"
       style="width: 100%; height: 98vh"
     >
-      <GmapMarker         
+      <GmapMarker
         v-for="location in locations"
         :key="location.name"
         :position="location.position"
@@ -16,7 +16,10 @@ false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
         @rightclick="markerRightClicked"
       />
     </GmapMap>
-    <FindButton id="find-button" v-if="this.$store.state.zoomOnStateToggle === false" />
+    <FindButton
+      id="find-button"
+      v-if="this.$store.state.zoomOnStateToggle === false"
+    />
     <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
     <HomeButton />
   </div>
@@ -33,7 +36,7 @@ export default {
   components: {
     FindButton,
     TruckStops,
-    HomeButton
+    HomeButton,
   },
 
   computed: {
@@ -52,10 +55,8 @@ export default {
 };
 </script>
 <style scoped>
-
 .map-container {
   position: relative;
   display: flex;
-  /* justify-content: left; */
 }
 </style>
