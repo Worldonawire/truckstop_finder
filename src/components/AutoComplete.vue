@@ -118,17 +118,20 @@ export default {
 }
 
 input {
+  background-color: #E65A25;
+  color: #122499;
   margin: auto;
   padding: 10px;
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  border: solid 3px black;
   outline: none;
 }
 
 .dropdown-contents {
   margin-top: 0%;
-  margin-left: 9%;
+  margin-left: 8%;
   border: 1px solid #eeeeee;
   height: 120px;
   width: 55%;
@@ -138,18 +141,19 @@ input {
 }
 
 .dropdown-content {
+  background-color: #E65A25;
+  color: #122499;
   font-family: Arial, Helvetica, sans-serif;
   text-align: left;
   padding: 4px 2px;
   cursor: pointer;
   list-style: none;
-  background-color: white;
 }
 
 .dropdown-content.is-active,
 .dropdown-content:hover {
-  background-color: #4aae9b;
-  color: white;
+  background-color: #B3920C;
+  color: #05FFE6;
 }
 
 

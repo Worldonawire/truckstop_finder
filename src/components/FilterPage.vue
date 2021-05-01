@@ -1,6 +1,5 @@
 <template>
   <div class="filter-page">
-   
   </div>
 </template>
 
@@ -9,20 +8,23 @@ export default {
   name: "FilterPage",
   components: {},
 
-  mounted() {
-    // this.getLocations();
+  computed: {
+    photo() {
+      return this.$store.state.photo
+    }
   },
- 
+
 };
 </script>
 
 <style scoped>
 .filter-page {
   position: absolute;
-  background-color: black;
+  background-color: white;
   height: 95vh;
   width: 95%;
-  top: 0px;
+  top: 0%;
+  left: 0%;
 
   
 }

@@ -105,9 +105,9 @@ button {
   top: 38%;
   left: 40%;
   border-radius: 50%;
-  /* background-color: #bbb; */
-  background-color: hsla(342, 87%, 58%, 0.95);
-  border: none;
+  background-color: hsla(232, 78.9%, 33.5%, 0.95);
+  color: #E65A25;
+  border: solid 5px black;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
   height: 300px;
   width: 300px;

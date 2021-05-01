@@ -10,13 +10,15 @@ export default new Vuex.Store({
   state: {
     locations: [],
     zoomOnStateToggle: false,
+    zoomOnStopToggle: false,
     clientLocation: "",
     availableTruckstops: [], 
     center: { lat: 39.5, lng: -98.35 },
     zoom: 5,
     filterPage: false,
     detailsPage: false,
-    chosenTruckstop: {}
+    chosenTruckstop: {},
+    photo: "../assets/photos/test.jpeg"
   },
 
   mutations: {
@@ -33,7 +35,16 @@ export default new Vuex.Store({
       state.zoom = 7;
       state.zoomOnStateToggle = true;
     },
+    zoomOnStop(state) {
+      state.center = {
+        lat: state.chosenTruckstop.position.lat,
+        lng: state.chosenTruckstop.position.lng
+      };
+      state.zoom = 14;
+      state.zoomOnStopToggle = true;
+    },
     filterDetails(state) {
+      console.log("filter page")
       state.filterPage = true;
     },
     detailsPageCall(state, payload) {
@@ -41,13 +52,24 @@ export default new Vuex.Store({
       state.detailsPage = true;
     },
     truckStopsBack(state){
-      console.log("iajsdpoijaspo")
       state.locations = [];
       state.zoomOnStateToggle = false;
+      state.zoomOnStopToggle = false;
       state.clientLocation = "";
       state.availableTruckstops = [];
       state.center = { lat: 39.5, lng: -98.35 };
       state.zoom = 5;
+      state.filterPage = false;
+      state.detailsPage = false;
+    },
+    truckStopsInfoBack(state){
+      state.zoomOnStateToggle = true;
+      state.zoomOnStopToggle = false;
+      state.center= {
+        lat: state.chosenTruckstop.position.lat,
+        lng: state.chosenTruckstop.position.lng
+      };
+      state.zoom = 7;
       state.filterPage = false;
       state.detailsPage = false;
       state.chosenTruckstop = {};
@@ -62,7 +84,7 @@ export default new Vuex.Store({
         const markers = locations.map((location) => ({
           position: {
             lat: location.latitude,
-            lng: location.longitude,
+            lng: location.longitude
           },
           name: location.name,
           address: location.address,

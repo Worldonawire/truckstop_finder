@@ -19,9 +19,8 @@
     <TruckStopInfo v-if="this.$store.state.detailsPage === true" />
     </div>
     <div id="buttons-container">
-     <button id="filter-button" @click="openFilterPage">Filter</button>
-     <button class="go-back-from-list-button" @click="goBackToMain" v-if="!this.$store.state.detailsPage"></button>
-     <!-- <button class="go-back-from-details-button"></button> -->
+     <button class="filter-button" @click="openFilterPage"></button>
+     <button class="go-back-button" @click="goBack"></button>
     </div>
     <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
   </div>
@@ -50,20 +49,28 @@ export default {
   },
   methods: {
     openFilterPage() {
-      this.$store.commit('filterDetails')
+      this.$store.commit('filterDetails');
     },
     detailsPageCall(location){
-      this.$store.commit('detailsPageCall', location)
+      this.$store.commit('detailsPageCall', location);
+      this.$store.commit('zoomOnStop', location);
     },
-    goBackToMain() {
-      console.log("I AM HERE")
-      this.$store.commit("truckStopsBack")
+    goBack() {
+      if (!this.$store.state.detailsPage) {
+        this.$store.commit("truckStopsBack");
+      } else {
+        this.$store.commit("truckStopsInfoBack");
+      }
     }
   }
 };
 </script>
 
 <style scoped>
+
+.keyDetails > * {
+  color: #E65A25;
+}
 
 #buttons-container {
   display: flex;
@@ -72,25 +79,25 @@ export default {
   right: 4%;  
 }
 
-#filter-button {
+.filter-button {
+  background: url("../assets/icons/settings.png") no-repeat;
   border-radius: 50%;
   /* background-color: #bbb; */
-  background-color: hsla(342, 87%, 58%, 0.95);
   border: none;
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
-  height: 3vw;
-  width: 3vw;
+  height: 66px;
+  width: 66px;
+  background-size: cover;
 }
 
-.go-back-from-list-button, .go-back-from-details-button {
+.go-back-button {
   background: url("../assets/icons/back-button.png") no-repeat;
   cursor: pointer;
   border:none;
   width: 66px;
   height: 66px;
+  background-size: cover;
   position: absolute;
   right: 110%;
-  filter: invert(100%);
 }
 
 .truck-stops-pane::-webkit-scrollbar {
@@ -121,10 +128,10 @@ export default {
   position: absolute;
   flex-direction: column;
   overflow-y: auto;
-  background-color: hsla(342, 87%, 58%, 0.95);
+  background-color: hsla(232, 78.9%, 33.5%, 0.95);
   border-radius: 20px;
   margin: 5px 5px;
-  width: 500px;
+  width: 33vw;
   height: 100%;
   top: 0%;
   left: 0%;
@@ -136,8 +143,9 @@ export default {
   display: flex;    
   flex-direction: row;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
-  height: 250px;
+  height: 20vh;
   width: 100%;
+  background: #122499;
   
 }
 
