@@ -1,5 +1,3 @@
-// { lat: 39.5, lng: -98.35 } // v-if="this.$store.state.zoomOnStateToggle ===
-false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
 <template>
   <div class="map-container">
     <GmapMap
@@ -10,7 +8,7 @@ false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
     >
       <GmapMarker
         v-for="location in locations"
-        :key="location.key"
+        :key="location.name"
         :position="location.position"
         :animation="location.defaultAnimation"
         @rightclick="markerRightClicked"
@@ -21,6 +19,8 @@ false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
       v-if="this.$store.state.zoomOnStateToggle === false"
     />
     <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
+    <FilterPage class="filter-results" v-if="this.$store.state.filterPage === true" />
+
   </div>
 </template>
 
@@ -28,16 +28,14 @@ false" // <TruckStops v-if="this.$store.state.zoomOnStateToggle === true" />
 import { gmapApi } from "vue2-google-maps";
 import FindButton from "./FindButton.vue";
 import TruckStops from "./TruckStops.vue";
+import FilterPage from "./FilterPage.vue"
 
 export default {
   name: "Map",
   components: {
     FindButton,
     TruckStops,
-  },
-
-  mounted() {
-    this.getLocations();
+    FilterPage
   },
 
   computed: {
@@ -52,11 +50,18 @@ export default {
       this.$store.dispatch("loadMarkers");
     },
     markerRightClicked() {},
-  },
+    },
+    // releasePhoto() {
+    //   this.$store.commit('selectPhoto')
+    // }
 };
 </script>
-<style scoped>
+
+<style>
+
 .map-container {
+  display: flex;
   position: relative;
 }
+
 </style>

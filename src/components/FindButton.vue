@@ -18,21 +18,17 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
   <div>
     <button class="btn" type="button" @click="zoomToState">
       <span>Find Truck Stops</span>
-    </button>
     <AutoComplete
       :items="[
         'Alabama',
-        'Alaska',
         'Arizona',
         'Arkansas',
         'California',
         'Colorado',
         'Connecticut',
         'Delaware',
-        'District of Columbia',
         'Florida',
         'Georgia',
-        'Hawaii',
         'Idaho',
         'Illinois',
         'Indiana',
@@ -42,7 +38,6 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'Louisiana',
         'Maine',
         'Maryland',
-        'Massachusetts',
         'Michigan',
         'Minnesota',
         'Mississippi',
@@ -50,19 +45,15 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'Montana',
         'Nebraska',
         'Nevada',
-        'New Hampshire',
         'New Jersey',
         'New Mexico',
         'New York',
         'North Carolina',
         'North Dakota',
-        'Northern Mariana Islands',
         'Ohio',
         'Oklahoma',
         'Oregon',
-        'Palau',
         'Pennsylvania',
-        'Puerto Rico',
         'Rhode Island',
         'South Carolina',
         'South Dakota',
@@ -70,7 +61,6 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'Texas',
         'Utah',
         'Vermont',
-        'Virgin Island',
         'Virginia',
         'Washington',
         'West Virginia',
@@ -78,11 +68,13 @@ Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
         'Wyoming',
       ]"
     />
+    </button>
   </div>
 </template>
 
 <script>
 import AutoComplete from "./AutoComplete.vue";
+import { stateInitials } from "../utils/stateCoords"
 
 export default {
   name: "FindButton",
@@ -92,7 +84,14 @@ export default {
 
   methods: {
     zoomToState() {
-      this.$store.commit("zoomOnState");
+      if (this.$store.state.clientLocation !== "") {
+        this.getLocations();
+        this.$store.commit("zoomOnState");
+      }
+    },
+
+    getLocations() {
+      this.$store.dispatch("loadMarkers");
     },
   },
 };
@@ -100,21 +99,26 @@ export default {
 
 <style scoped>
 button {
-  position: absolute;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: 38%;
+  left: 40%;
   border-radius: 50%;
-  /* background-color: #bbb; */
-  background-color: hsla(342, 87%, 58%, 0.95);
-  border: none;
+  background-color: hsla(232, 78.9%, 33.5%, 0.95);
+  color: #E65A25;
+  border: solid 5px black;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
-  height: 400px;
-  width: 400px;
-  left: 41%;
-  top: 33%;
+  height: 300px;
+  width: 300px;
+
 }
 
 span {
+  margin-top: 8vh;
+  margin-bottom: 2vh;
   font-weight: bold;
-  font-size: 300%;
+  font-size: 45px;
 }
 
 @media screen and (min-width: 360px) and (max-width: 767px) {
@@ -126,7 +130,7 @@ span {
   }
 
   span {
-    font-size: 30px;
+    font-size: 23px;
   }
 }
 
