@@ -1,6 +1,6 @@
 ****THIS WAS CREATED DURING OUR TIME AT CODE CHRYSALIS****
 
-# TruckStop API
+# TruckStop app
 ### Accessing American's truck stops! Yippee kai-yay!
 
 
@@ -11,8 +11,6 @@
 1.  [Overview](#overview)
 1.  [Environment](#environment)
     1.  [Installing Dependencies](#installing-dependencies)
-1.  [Available Endpoint](#available-queries)
-    1.  [Queries](#queries)
 1. [Accessing the front-end](#accessing-the-front-end)
 1.  [Contributing](#contributing)
 
@@ -44,25 +42,9 @@ After cloning the repo, to install depedencies:
 npm install
 ```
 
-
-## Available Endpoint
-
-The /api endpoint is available for querying the database. 
-
-
-### Possible Queries
-
-- [ ] `TEST`
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-
-
-
 ## Accessing the Frontend
+
+
 
 
 ## Contributing
