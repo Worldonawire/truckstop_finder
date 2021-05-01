@@ -1,3 +1,4 @@
+
 <template>
   <div class="filter-page">
   </div>
@@ -20,12 +21,14 @@ export default {
 <style scoped>
 .filter-page {
   position: absolute;
-  background-color: white;
+  background-color: black;
   height: 95vh;
   width: 95%;
   top: 0%;
   left: 0%;
-
+  z-index: 1;
   
 }
+
+
 </style>

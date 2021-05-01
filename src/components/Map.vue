@@ -28,7 +28,7 @@
 import { gmapApi } from "vue2-google-maps";
 import FindButton from "./FindButton.vue";
 import TruckStops from "./TruckStops.vue";
-import FilterPage from "./FilterPage"
+import FilterPage from "./FilterPage.vue"
 
 export default {
   name: "Map",
@@ -50,7 +50,10 @@ export default {
       this.$store.dispatch("loadMarkers");
     },
     markerRightClicked() {},
-  },
+    },
+    // releasePhoto() {
+    //   this.$store.commit('selectPhoto')
+    // }
 };
 </script>
 

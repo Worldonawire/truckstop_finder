@@ -164,7 +164,7 @@ input {
 
   .dropdown-contents {
     border: 1px solid #eeeeee;
-    margin-left: -10%;
+    margin-left: -13%;
     height: 120px;
     width: 140px;
     overflow: auto;
@@ -180,7 +180,7 @@ input {
 
   .dropdown-contents {
     border: 1px solid #eeeeee;
-    margin-left: -10%;
+    margin-left: -13%;
     height: 120px;
     width: 140px;
     overflow: auto;
@@ -195,7 +195,7 @@ input {
   }
 
   .dropdown-contents {
-    margin-left: -10%;
+    margin-left: -13%;
     border: 1px solid #eeeeee;
     height: 120px;
     width: 140px;
@@ -217,6 +217,7 @@ input {
     overflow: auto;
     outline: none;
     border: none;
+    margin-left: 11%;
   }
 }
 </style>

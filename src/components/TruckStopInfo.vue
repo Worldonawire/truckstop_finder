@@ -19,13 +19,21 @@
   <div class="restaurants">
     <h3>{{this.$store.state.chosenTruckstop.restaurants}}</h3>
   </div>
-</div>
+    <img :src="selectedTestPhotoy" /> 
+  </div>
 </template>
 
 <script>
 export default {
   name: "TruckStopInfo",
   components: {},
+  
+  computed: {
+   selectedTestPhotoy() {
+     console.log("Argghhhh", this.$store.state.selectedPhoto);
+      return this.$store.state.selectedPhoto
+    },
+  },
 
   methods: {
 
@@ -60,5 +68,11 @@ export default {
 
 .resturants {
   margin-top: 10px;
+}
+
+img {
+  width: 90%;
+  /* height: 100%; */
+  display: block;
 }
 </style>

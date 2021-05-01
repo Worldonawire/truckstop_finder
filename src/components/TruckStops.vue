@@ -28,16 +28,13 @@
 
 <script>
 import TruckStopInfo from "./TruckStopInfo.vue";
-import FilterPage from "./FilterPage.vue";
 import { gmapApi } from "vue2-google-maps";
 
 export default {
   name: "TruckStops",
   computed: {
     google: gmapApi,
-  },
 
-  computed: {
     locations() {
       return this.$store.state.locations;
     },
@@ -45,15 +42,15 @@ export default {
 
   components: {
     TruckStopInfo,
-    FilterPage,
   },
   methods: {
     openFilterPage() {
       this.$store.commit('filterDetails');
     },
     detailsPageCall(location){
-      this.$store.commit('detailsPageCall', location);
+      this.$store.commit('detailsPageCall', location)
       this.$store.commit('zoomOnStop', location);
+      this.$store.commit('selectPhoto')
     },
     goBack() {
       if (!this.$store.state.detailsPage) {
@@ -76,7 +73,8 @@ export default {
   display: flex;
   position: absolute;
   top: 1%;
-  right: 4%;  
+  right: 7%;  
+  z-index: 2;
 }
 
 .filter-button {
@@ -87,6 +85,7 @@ export default {
   height: 66px;
   width: 66px;
   background-size: cover;
+  z-index: 2;
 }
 
 .go-back-button {
@@ -98,17 +97,13 @@ export default {
   background-size: cover;
   position: absolute;
   right: 110%;
+  z-index: 2;
 }
 
 .truck-stops-pane::-webkit-scrollbar {
   width: 11px;
   
 }
-/* 
-.truck-stops-pane {
-  scrollbar-width: thin;
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-} */
 
 .truck-stops-pane::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
@@ -121,10 +116,10 @@ export default {
   border: 3px solid var(--scrollbarBG);
   background: #969696;
 }
+
 .truck-stops-pane {
   display: flex;   
   /* flex-direction: row; */
-  
   position: absolute;
   flex-direction: column;
   overflow-y: auto;
@@ -172,4 +167,15 @@ export default {
   justify-content: space-between;
 }
 
+
+  /* .filter-results {
+  position: absolute;
+  background-color: black;
+  height: 95vh;
+  width: 95%;
+  top: 0px;
+  z-index: 3;
+
+  
+} */
 </style>

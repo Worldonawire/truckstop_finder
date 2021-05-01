@@ -17,8 +17,33 @@ export default new Vuex.Store({
     zoom: 5,
     filterPage: false,
     detailsPage: false,
-    chosenTruckstop: {},
-    photo: "../assets/photos/test.jpeg"
+    selectedTruckStop: {},
+    formInfo: {
+      "Cash Accepted": null
+    },
+    selectedPhoto: null,
+    allPhotos: [
+      require('@/assets/images/photo1.jpg'), 
+      require('@/assets/images/photo2.jpg'), 
+      require('@/assets/images/photo3.jpg'), 
+      require('@/assets/images/photo4.jpg'), 
+      require('@/assets/images/photo5.jpg'), 
+      require('@/assets/images/photo6.jpg'), 
+      require('@/assets/images/photo7.jpg'), 
+      require('@/assets/images/photo8.jpg'), 
+      require('@/assets/images/photo9.jpg'), 
+      require('@/assets/images/photo10.jpg'), 
+      require('@/assets/images/photo11.png'), 
+      require('@/assets/images/photo12.jpg'), 
+      require('@/assets/images/photo13.gif'), 
+      require('@/assets/images/photo14.jpg'), 
+      require('@/assets/images/photo15.jpg'), 
+      require('@/assets/images/photo16.jpg'), 
+      require('@/assets/images/photo17.png'), 
+      require('@/assets/images/photo18.jpg'), 
+      require('@/assets/images/photo19.jpg') 
+      
+    ]
   },
 
   mutations: {
@@ -74,6 +99,16 @@ export default new Vuex.Store({
       state.detailsPage = false;
       state.chosenTruckstop = {};
     },
+    submitData(state, value ) {
+      state.formInfo["Cash Accepted"] = value;
+      console.log("FORM DATA >>>>", state.formInfo);
+    },
+   
+  selectPhoto(state, allPhotos) {
+    let randomIndex = Math.floor(Math.random() * state.allPhotos.length);
+    state.selectedPhoto = state.allPhotos[randomIndex];
+    console.log(state.selectedPhoto);
+  }
     
   },
 
