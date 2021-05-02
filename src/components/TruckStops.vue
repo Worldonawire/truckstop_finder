@@ -29,6 +29,7 @@
 <script>
 import TruckStopInfo from "./TruckStopInfo.vue";
 import { gmapApi } from "vue2-google-maps";
+import FilterPage from "./FilterPage.vue";
 
 export default {
   name: "TruckStops",
@@ -42,6 +43,7 @@ export default {
 
   components: {
     TruckStopInfo,
+    FilterPage
   },
   methods: {
     openFilterPage() {

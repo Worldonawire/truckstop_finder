@@ -17,7 +17,9 @@ export default new Vuex.Store({
     zoom: 5,
     filterPage: false,
     detailsPage: false,
-    selectedTruckStop: {},
+    chosenTruckStop: {},
+    filterPageDetails: false,
+    tempLocations: [],
     formInfo: {
       "Cash Accepted": null
     },
@@ -43,7 +45,13 @@ export default new Vuex.Store({
       require('@/assets/images/photo18.jpg'), 
       require('@/assets/images/photo19.jpg') 
       
-    ]
+    ],
+
+    defaultLocation: {
+      amenities: ["24-Hour Road Service", "Open 24-Hours", "Copy & Fax Services", "Wireless Internet", "ATM",  "Overnight Parking", "Parking Spaces", "Private Showers", "Light Mechanical" ],
+      restaurants: ["FlyingK Subs Burritos", "Subway", "McDonald's", "Arby's", "Chester's", "Godfather's Pizza", "Del Taco", "Taco Bell", "Wendy's"],
+      payments: ["FlyingK Express", "All Major Credit Cards", "Cash Accepted", "EBT/SNAP", "Multiservice", "T-Chek"]
+    }
   },
 
   mutations: {
@@ -79,6 +87,9 @@ export default new Vuex.Store({
       state.chosenTruckstop = payload
       state.detailsPage = true;
     },
+    populateFilterPage(state) { 
+      state.filterPageDetailsToggle = true;   
+    },
     truckStopsBack(state){
       state.locations = [];
       state.zoomOnStateToggle = false;
@@ -107,12 +118,47 @@ export default new Vuex.Store({
       console.log("FORM DATA >>>>", state.formInfo);
     },
    
-  selectPhoto(state, allPhotos) {
-    let randomIndex = Math.floor(Math.random() * state.allPhotos.length);
-    state.selectedPhoto = state.allPhotos[randomIndex];
-    console.log(state.selectedPhoto);
-  }
-    
+    selectPhoto(state, allPhotos) {
+      let randomIndex = Math.floor(Math.random() * state.allPhotos.length);
+      state.selectedPhoto = state.allPhotos[randomIndex];
+      console.log(state.selectedPhoto);
+    },
+
+    clearAllFilters(state) {
+      state.locations = state.tempLocations;
+    },
+
+    filterStops(state, payload) {
+
+      console.log("STORE'S filterStops was called")
+      console.log("Payload is:")
+      console.log(payload)
+      
+      state.tempLocations = state.locations;
+
+      const filteredLocations = [];
+      
+      for (let el in state.locations.amenities) {
+        console.log("EL is EL")
+        console.log(el);
+        if (payload.amenities === state.locations.amenities) {
+          out.push(el);
+        }
+      }
+      for (let el in state.locations.payments) {
+        if (payload.payments === state.locations.payments) {
+          out.push(el);
+        }
+      }
+      for (let el in state.locations.restaurants) {
+        if (payload.restaurants === state.locations.restaurants) {
+          out.push(el);
+        }
+      }
+      console.log("Filtered Locations is: ")
+      console.log(filteredLocations)
+      state.locations = filteredLocations;
+    }
   },
 
   actions: {
