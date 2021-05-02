@@ -10,9 +10,9 @@
             <h2>{{location.city+", "+ location.state}}</h2>
         </div>
         <div class="extraDetails">
-          <div class="amenities">icon1</div>
-          <div class="payments">icon2</div>
-          <div class="restaurants">icon3</div>
+          <div class="amenities"></div>
+          <div class="payments"></div>
+          <div class="restaurants"></div>
         </div>
       </button>
     </div>

@@ -48,7 +48,7 @@ export default new Vuex.Store({
     ],
 
     defaultLocation: {
-      amenities: ["24-Hour Road Service", "Open 24-Hours", "Copy & Fax Services", "Wireless Internet", "ATM",  "Overnight Parking", "Parking Spaces", "Private Showers", "Light Mechanical" ],
+      amenities: ["24-Hour Road Service", "Open 24-Hours", "Copy & Fax Service", "Wireless Internet", "ATM",  "Overnight Parking", "Parking Spaces", "Private Showers", "Light Mechanical" ],
       restaurants: ["FlyingK Subs Burritos", "Subway", "McDonald's", "Arby's", "Chester's", "Godfather's Pizza", "Del Taco", "Taco Bell", "Wendy's"],
       payments: ["FlyingK Express", "All Major Credit Cards", "Cash Accepted", "EBT/SNAP", "Multiservice", "T-Chek"]
     },
@@ -117,7 +117,6 @@ export default new Vuex.Store({
     },
     submitData(state, value ) {
       state.formInfo["Cash Accepted"] = value;
-      console.log("FORM DATA >>>>", state.formInfo);
     },
    
     selectPhoto(state, allPhotos) {
@@ -130,47 +129,63 @@ export default new Vuex.Store({
       state.locations = state.tempLocations;
     },
 
-    filterStops(state, payload) {
-
-      console.log("STORE'S filterStops was called")
-      console.log("Payload is:")
-      console.log(payload)
-      
+    filterStops(state, payload) {      
       state.tempLocations = state.locations;
-
-      const filteredLocations = [];
-
-      console.log("State > Locations is: ")
-      console.log(state.locations)
+      let filteredLocations = [];
+      let temp1 = [];
+      let flag = true
       
       for (let el of state.locations) {
 
-        console.log("el is: ")
-        console.log(el)
-        console.log("Iterated el.amenities is: ")
-        console.log(el.amenities)
-        if (el.amenities.includes(payload.amenities)) {
-          console.log("MATCH FOUND")
-          out.push(el);
+        flag = true
+
+        for (let i = 0; i < payload.amenities.length; i++) {
+          if (el.amenities.includes(payload.amenities[i])) {
+          } else {
+            flag = false
+          }
+        } 
+        if (flag) {
+          temp1.push(el)
         }
       }
 
-      for (let el of state.locations.payments) {
-        for (let i = 0; i < payload.payments.length; i++) {
-          if (el.payments.includes(payload.payments[i])) {
-            out.push(el);
+      for (let i=0; i<temp1.length;i++) {
+        flag = true
+
+        for (let i=0; i < payload.payments.length; i++) {
+          console.log("temp1 is")
+          console.log(temp1)
+          if (temp1[i].payments.includes(payload.payments[i])) {
+          } else {
+            flag = false
           }
         }
-      }
-
-      for (let el of state.locations.restaurants) {
-        if (el.restaurants.includes(payload.restaurants)) {
-          out.push(el);
+        if (!flag) {
+          temp1.splice(temp1[i])
         }
       }
-      console.log("Filtered Locations is: ")
-      console.log(filteredLocations)
+
+      
+      for (let i=0; i < temp1.length; i++) {
+        flag = true
+
+        for (let i=0;i < payload.restaurants.length; i++) {
+          if (temp1[i].restaurants.includes(payload.restaurants[i])) {
+          } else {
+            flag = false
+          }
+        }
+        if (!flag) {
+          temp1.splice(temp1[i])
+        }
+      }
+
+      if (temp1.length) {
+        filteredLocations = [...filteredLocations, ...temp1,];
+      } 
       state.locations = filteredLocations;
+      console.log("the final filterlocations is", filteredLocations)
     },
 
     displayIconDetail(state, iconName) {

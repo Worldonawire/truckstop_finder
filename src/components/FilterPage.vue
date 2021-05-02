@@ -1,7 +1,5 @@
-this.$store.state.defaultLocation.restaurants
 <template>
   <div class="filter-page">
-    I AM THE FILTER PAGE! BAHHHHHHH! <br> FEED ME OPTIONS!
     <form @submit.prevent="handleData()">
       <div>Amenities:</div><br>
           <div v-for="(result, i) in defaultAmenitiesInfo.amenities" :key="i">
@@ -18,19 +16,18 @@ this.$store.state.defaultLocation.restaurants
           </div>
           <br>
       <div>Restaurants:</div><br>   
-          <div v-for="(result, i) in defaultAmenitiesInfo.restaurants" :key="i">
+          <div v-for="(result, e) in defaultAmenitiesInfo.restaurants" :key="e + 10">
             <label :id="result">{{ result }}</label>
             <input type="checkbox"
             :name="result" 
             :value="result"
             :id="result"
             v-model="options.restaurants"
-
             />
           </div>
           <br>
       <div>Payments:</div><br> 
-          <div v-for="(result, i) in defaultAmenitiesInfo.payments" :key="i">
+          <div v-for="(result, a) in defaultAmenitiesInfo.payments" :key="a + 20">
             <label :id="result">{{ result }}</label>
             <input type="checkbox"
             :name="result"
@@ -42,7 +39,7 @@ this.$store.state.defaultLocation.restaurants
 
         
 
-       <button type="submit" name="submit">I AM HERE</button>
+       <button type="submit" name="submit">Submit</button>
 
    </form>
   </div>
@@ -85,10 +82,7 @@ export default {
       defaultAmenitiesInfo() {
         console.log(this.$store.state.defaultLocation)
             return this.$store.state.defaultLocation
-          },
-      photo() {
-      return this.$store.state.photo
-    }
+          }
   },
 
 };
@@ -97,12 +91,12 @@ export default {
 <style scoped>
 input[type=checkbox] {
   margin-left: 2vw;
-  -ms-transform: scale(3); /* IE */
-  -moz-transform: scale(3); /* FF */
-  -webkit-transform: scale(3); /* Safari and Chrome */
-  -o-transform: scale(3); /* Opera */
-  transform: scale(3);
-  padding: 10px;
+  /* -ms-transform: scale(2);
+  -moz-transform: scale(2);
+  -webkit-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2); */
+  padding: 5px;
 }
 .filter-page {
   position: absolute;
