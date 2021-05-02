@@ -50,7 +50,6 @@ export default {
   
   computed: {
    selectedTestPhotoy() {
-     console.log("Argghhhh", this.$store.state.selectedPhoto);
       return this.$store.state.selectedPhoto
     },
   },
@@ -129,7 +128,7 @@ img {
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 390px) {
+@media screen and (min-width: 375px) and (max-width: 399px) {
   .info {
     font-size: 70%;
   }

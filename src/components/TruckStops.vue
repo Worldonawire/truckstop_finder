@@ -187,7 +187,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 390px) {
+@media screen and (min-width: 375px) and (max-width: 399px) {
   .truck-stops-pane {
     top:-1%;
     left: -1.5%;
