@@ -1,4 +1,5 @@
 exports.up = function(knex) {
+
   return knex.schema.createTable("locations", (table) => {
     table.increments("id").notNullable();
     table.text("name").notNullable();

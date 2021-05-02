@@ -80,7 +80,6 @@ export default {
 .filter-button {
   background: url("../assets/icons/settings.png") no-repeat;
   border-radius: 50%;
-  /* background-color: #bbb; */
   border: none;
   height: 66px;
   width: 66px;
@@ -119,7 +118,6 @@ export default {
 
 .truck-stops-pane {
   display: flex;   
-  /* flex-direction: row; */
   position: absolute;
   flex-direction: column;
   overflow-y: auto;
@@ -141,7 +139,6 @@ export default {
   height: 20vh;
   width: 100%;
   background: #122499;
-  
 }
 
 .extraDetails {
@@ -167,6 +164,96 @@ export default {
   justify-content: space-between;
 }
 
+@media screen and (min-width: 360px) and (max-width: 374px) {
+  .truck-stops-pane {
+    top:-1%;
+    left: -1.5%;
+    border-radius: 5px;
+
+  }
+
+  .truck-stop-details {
+    font-size: 40%;
+  }
+
+  .keyDetails {
+    margin:auto;
+  }
+
+  .extraDetails {
+    display:none
+
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 390px) {
+  .truck-stops-pane {
+    top:-1%;
+    left: -1.5%;
+    border-radius: 5px;
+
+  }
+
+  .truck-stop-details {
+    font-size: 40%;
+  }
+
+  .keyDetails {
+    margin:auto;
+
+  }
+
+  .extraDetails {
+    display:none
+
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 420px) {
+  .truck-stops-pane {
+    top:-1%;
+    left: -1.5%;
+    border-radius: 5px;
+
+  }
+
+  .truck-stop-details {
+    font-size: 40%;
+  }
+
+  .keyDetails {
+    margin:auto;
+
+  }
+
+  .extraDetails {
+    display:none
+
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+  .truck-stops-pane {
+    top:-0.5%;
+    left: -1.5%;
+    border-radius: 10px;
+
+  }
+
+  .truck-stop-details {
+    font-size: 60%;
+  }
+
+  .keyDetails {
+    margin:auto;
+
+  }
+
+  .extraDetails {
+    display:none
+
+  }
+}
 
   /* .filter-results {
   position: absolute;

@@ -26,5 +26,7 @@ export default {
 }
 
 body {
+  background-color: black;
+
 }
 </style>

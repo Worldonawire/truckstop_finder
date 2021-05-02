@@ -118,7 +118,7 @@ export default {
 }
 
 input {
-  background-color: #E65A25;
+  background-color: #e65a25;
   color: #122499;
   margin: auto;
   padding: 10px;
@@ -132,12 +132,10 @@ input {
 .dropdown-contents {
   margin-top: 0%;
   margin-left: 8%;
-  border: 1px solid #eeeeee;
   height: 120px;
   width: 55%;
   overflow: auto;
   outline: none;
-  border: none;
 }
 
 .dropdown-content {
@@ -160,10 +158,10 @@ input {
 @media screen and (min-width: 360px) and (max-width: 374px) {
   input {
     padding: 5px;
+    width: 60%;
   }
 
   .dropdown-contents {
-    border: 1px solid #eeeeee;
     margin-left: -13%;
     height: 120px;
     width: 140px;
@@ -179,7 +177,6 @@ input {
   }
 
   .dropdown-contents {
-    border: 1px solid #eeeeee;
     margin-left: -13%;
     height: 120px;
     width: 140px;
@@ -196,7 +193,6 @@ input {
 
   .dropdown-contents {
     margin-left: -13%;
-    border: 1px solid #eeeeee;
     height: 120px;
     width: 140px;
     overflow: auto;
@@ -211,7 +207,6 @@ input {
   }
 
   .dropdown-contents {
-    border: 1px solid #eeeeee;
     height: 120px;
     width: 175px;
     overflow: auto;
