@@ -1,6 +1,7 @@
 
 <template>
   <div class="filter-page">
+    I AM THE FILTER PAGE! BAHHHHHHH! <br> FEED ME OPTIONS!
   </div>
 </template>
 
@@ -22,11 +23,15 @@ export default {
 .filter-page {
   position: absolute;
   background-color: black;
+  color: white;
+  font-size: 900%;
   height: 95vh;
   width: 95%;
-  top: 0%;
-  left: 0%;
+  top: 3%;
+  left: 3%;
   z-index: 1;
+  border-style: solid;
+  border-color: white;
   
 }
 

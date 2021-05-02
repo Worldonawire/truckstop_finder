@@ -69,8 +69,11 @@ export default new Vuex.Store({
       state.zoomOnStopToggle = true;
     },
     filterDetails(state) {
-      console.log("filter page")
-      state.filterPage = true;
+      if (state.filterPage) {
+        state.filterPage = false;
+      } else {
+        state.filterPage = true;
+      }
     },
     detailsPageCall(state, payload) {
       state.chosenTruckstop = payload

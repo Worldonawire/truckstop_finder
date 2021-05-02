@@ -121,13 +121,14 @@ export default {
   position: absolute;
   flex-direction: column;
   overflow-y: auto;
-  background-color: hsla(232, 78.9%, 33.5%, 0.95);
+  background-color: rgba(102, 105, 126, 0.95);
   border-radius: 20px;
   margin: 5px 5px;
   width: 33vw;
-  height: 100%;
-  top: 0%;
-  left: 0%;
+  height: 99%;
+  top: -0.5%;
+  left: -0.5%;
+  border-style: solid;
 }
 
 .truck-stop-details {
