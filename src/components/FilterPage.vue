@@ -95,6 +95,15 @@ export default {
 </script>
 
 <style scoped>
+input[type=checkbox] {
+  margin-left: 2vw;
+  -ms-transform: scale(3); /* IE */
+  -moz-transform: scale(3); /* FF */
+  -webkit-transform: scale(3); /* Safari and Chrome */
+  -o-transform: scale(3); /* Opera */
+  transform: scale(3);
+  padding: 10px;
+}
 .filter-page {
   position: absolute;
   background-color: black;

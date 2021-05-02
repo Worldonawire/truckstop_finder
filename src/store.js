@@ -51,7 +51,9 @@ export default new Vuex.Store({
       amenities: ["24-Hour Road Service", "Open 24-Hours", "Copy & Fax Services", "Wireless Internet", "ATM",  "Overnight Parking", "Parking Spaces", "Private Showers", "Light Mechanical" ],
       restaurants: ["FlyingK Subs Burritos", "Subway", "McDonald's", "Arby's", "Chester's", "Godfather's Pizza", "Del Taco", "Taco Bell", "Wendy's"],
       payments: ["FlyingK Express", "All Major Credit Cards", "Cash Accepted", "EBT/SNAP", "Multiservice", "T-Chek"]
-    }
+    },
+    chosenIcon: "",
+    displayIconName: false,
   },
 
   mutations: {
@@ -137,28 +139,45 @@ export default new Vuex.Store({
       state.tempLocations = state.locations;
 
       const filteredLocations = [];
+
+      console.log("State > Locations is: ")
+      console.log(state.locations)
       
-      for (let el in state.locations.amenities) {
-        console.log("EL is EL")
-        console.log(el);
-        if (payload.amenities === state.locations.amenities) {
+      for (let el of state.locations) {
+
+        console.log("el is: ")
+        console.log(el)
+        console.log("Iterated el.amenities is: ")
+        console.log(el.amenities)
+        if (el.amenities.includes(payload.amenities)) {
+          console.log("MATCH FOUND")
           out.push(el);
         }
       }
-      for (let el in state.locations.payments) {
-        if (payload.payments === state.locations.payments) {
-          out.push(el);
+
+      for (let el of state.locations.payments) {
+        for (let i = 0; i < payload.payments.length; i++) {
+          if (el.payments.includes(payload.payments[i])) {
+            out.push(el);
+          }
         }
       }
-      for (let el in state.locations.restaurants) {
-        if (payload.restaurants === state.locations.restaurants) {
+
+      for (let el of state.locations.restaurants) {
+        if (el.restaurants.includes(payload.restaurants)) {
           out.push(el);
         }
       }
       console.log("Filtered Locations is: ")
       console.log(filteredLocations)
       state.locations = filteredLocations;
+    },
+
+    displayIconDetail(state, iconName) {
+      state.chosenIcon = iconName;
+      state.displayIconName = !state.displayIconName;
     }
+    
   },
 
   actions: {
