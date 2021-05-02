@@ -11,33 +11,51 @@
     </div>
 
     <div class="amenities">
-      <img
-        class="amenities-icon"
-        v-for="(path, index) in amenitiesImages"
-        :key="index"
-        :src="path"
-        alt="Amenities-icon"
-      />
+      <div v-for="(path, index) in amenitiesImages"
+          :key="index" >
+          <img
+            class="amenities-icon"
+            @click="displayName(amenitiesName[index])"
+            :src="path"
+            alt="Amenities-icon"
+          />
+        <button class="amenities-name" 
+        v-if="getStore.displayIconName === true && amenitiesName[index] === getStore.chosenIcon">
+        {{getStore.chosenIcon}}
+        </button>
+      </div>
     </div>
 
     <div class="payments">
-      <img
-        class="payments-icon"
-        v-for="(path, index) in paymentsImages"
-        :key="index"
-        :src="path"
-        alt="payments-icon"
-      />
+      <div v-for="(path, index) in paymentsImages"
+          :key="index">
+        <img
+          class="payments-icon"
+          @click="displayName(paymentsName[index])"
+          :src="path"
+          alt="payments-icon"
+        />
+        <button class="payments-name" 
+      v-if="getStore.displayIconName === true && paymentsName[index] === getStore.chosenIcon">
+      {{getStore.chosenIcon}}
+      </button>
+      </div>
     </div>
 
     <div class="restaurants">
+      <div v-for="(path, index) in restaurantsImages"
+        :key="index">
       <img
         class="restaurants-icon"
-        v-for="(path, index) in restaurantsImages"
-        :key="index"
+        @click="displayName(restaurantsName[index])"
         :src="path"
         alt="restaurants-icon"
       />
+      <button class="restaurants-name" 
+      v-if="getStore.displayIconName === true && restaurantsName[index] === getStore.chosenIcon">
+      {{getStore.chosenIcon}}
+      </button>
+    </div>
     </div>
   </div>
 </template>
@@ -45,13 +63,24 @@
 <script>
 export default {
   name: "TruckStopInfo",
-  components: {},
+  components: {
+
+  },
+
+  computed: {
+    getStore(){
+      return this.$store.state;
+    }
+  },
 
   data() {
     return {
       amenitiesImages: [],
       paymentsImages: [],
       restaurantsImages: [],
+      amenitiesName: [],
+      paymentsName: [],
+      restaurantsName: [],
     };
   },
 
@@ -62,18 +91,23 @@ export default {
   methods: {
     getIcon() {
       for (let item of this.$store.state.chosenTruckstop.amenities) {
-        this.amenitiesImages.push(require(`@/assets/icons/${item}.png`));
+        if(item === 'DEF # of Lanes') this.amenitiesImages.push(require(`@/assets/icons/DEF of Lanes.png`));
+        else this.amenitiesImages.push(require(`@/assets/icons/${item}.png`));
+        this.amenitiesName.push(item);
       }
       for (let item of this.$store.state.chosenTruckstop.payments) {
         this.paymentsImages.push(require(`@/assets/icons/${item}.png`));
+        this.paymentsName.push(item);
       }
       for (let item of this.$store.state.chosenTruckstop.restaurants) {
         this.restaurantsImages.push(require(`@/assets/icons/${item}.png`));
+        this.restaurantsName.push(item);
       }
-      console.log(this.amenitiesImages);
-      console.log(this.paymentsImages);
-      console.log(this.restaurantsImages);
     },
+
+    displayName(iconName) {
+      this.$store.commit("displayIconDetail", iconName);
+    }
   },
 };
 </script>
@@ -98,18 +132,18 @@ export default {
   display: grid;
   margin-top: 10px;
   background-color: rgb(201, 46, 46);
-  border: solid 0.2em;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  border: solid 0.2em black;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   grid-auto-rows: 50px;
-  gap: 5px, 5px;
+  gap: 10px, 10px;
 }
 
 .payments {
   display: grid;
   margin-top: 10px;
   background-color: rgb(201, 46, 46);
-  border: solid 0.2em;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  border: solid 0.2em black;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   grid-auto-rows: 50px;
   gap: 5px, 5px;
 }
@@ -118,9 +152,9 @@ export default {
   display: grid;
   margin-top: 10px;
   background-color: rgb(201, 46, 46);
-  border: solid 0.2em;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  grid-auto-rows: 50px;
+  border: solid 0.2em black;
+  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+  grid-auto-rows: 80px;
   gap: 5px, 5px;
 }
 
@@ -146,8 +180,8 @@ export default {
 
 .restaurants-icon {
   margin-top: 5px;
-  height: min(100%, 50px);
-  width: min(100%, 50px);
+  height: min(100%, 80px);
+  width: min(100%, 100px);
 }
 
 .restaurants-icon:hover {
@@ -160,5 +194,21 @@ export default {
 
 .resturants {
   margin-top: 10px;
+}
+
+.amenities-name {
+  position: absolute;
+  display: block;
+  z-index: 7;
+}
+.payments-name {
+  position: absolute;
+  display: block;
+  z-index: 7;
+}
+.restaurants-name {
+  position: absolute;
+  display: block;
+  z-index: 7;
 }
 </style>

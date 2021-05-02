@@ -17,6 +17,8 @@ export default new Vuex.Store({
     filterPage: false,
     detailsPage: false,
     selectedTruckStop: {},
+    displayIconName: false,
+    chosenIcon: '',
   },
 
   mutations: {
@@ -53,6 +55,11 @@ export default new Vuex.Store({
         chosenTruckstop: {}
       }
     },
+
+    displayIconDetail(state, iconName) {
+      state.chosenIcon = iconName;
+      state.displayIconName = !state.displayIconName;
+    }
     
   },
 
