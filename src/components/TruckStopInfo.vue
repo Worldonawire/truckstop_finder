@@ -147,14 +147,9 @@ export default {
   color: #E65A25;
 }
 
-.info {
-  border: solid black 0.5em;
-}
 .amenities {
   display: grid;
   margin-top: 10px;
-  background-color: rgb(201, 46, 46);
-  border: solid 0.2em black;
   grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   grid-auto-rows: 50px;
   gap: 10px, 10px;
@@ -163,8 +158,6 @@ export default {
 .payments {
   display: grid;
   margin-top: 10px;
-  background-color: rgb(201, 46, 46);
-  border: solid 0.2em black;
   grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   grid-auto-rows: 50px;
   gap: 5px, 5px;
@@ -173,8 +166,6 @@ export default {
 .restaurants {
   display: grid;
   margin-top: 10px;
-  background-color: rgb(201, 46, 46);
-  border: solid 0.2em black;
   grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
   grid-auto-rows: 80px;
   gap: 5px, 5px;
@@ -202,6 +193,7 @@ export default {
 
 .restaurants-icon {
   margin-top: 5px;
+  margin-left: 50px;
   height: min(100%, 80px);
   width: min(100%, 100px);
 }
@@ -215,6 +207,7 @@ export default {
 }
 
 .resturants {
+  margin-left: 20px;
   margin-top: 10px;
 }
 
@@ -224,6 +217,8 @@ img {
   border-radius: 5%;
   border: 4px solid black;
   box-shadow: 5px 5px 5px black;
+  margin-top: 5%;
+  margin-left: -3%;
 }
 
 @media screen and (min-width: 360px) and (max-width: 374px) {
