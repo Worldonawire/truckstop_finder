@@ -5,9 +5,9 @@ const db = knex({
   client: "pg",
   connection: {
     connectionString:
-    process.env.DATABASE_URL ||
-    `postgres://${process.env.USER}:${process.env.DATABASE_PW}@127.0.0.1:5432/`,
-    ssl: { rejectUnauthorized: false }
+      process.env.DATABASE_URL ||
+      `postgres://${process.env.USER}:${process.env.DATABASE_PW}@127.0.0.1:5432/truckstopapi`,
+    ssl: { rejectUnauthorized: false },
   },
   searchPath: "public",
   seeds: {
