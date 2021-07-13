@@ -1,172 +1,24 @@
-****THIS WAS CREATED DURING OUR TIME AT CODE CHRYSALIS****
+# TruckStopApi 
 
-# TruckStop app
-### Accessing American's truck stops! Yippee kai-yay!
+## Preface
 
+This project is more complex than what you have seen before. It is supposed to mimic you graduating, getting your first job, being asked to handle a certain task. It is **normal** to feel overwhelmed.
 
+Here are some pointers to help you through this:
 
-## Table of Contents
+- In bigger projects, you either have another team or developers work on separate tasks and parts of the project, so you do not need to and can not spend time trying to understand everything
+- You will have a certain task, prioritize finding out _where_ in the code base you have to work on
+- VSCode is your best friend, use `Ctrl/CMD + P` to quickly navigate through files, searching for terms like "migration", to help you find what you need
+- You will need to get comfortable not knowing everything, keep in mind: CONJURE, CONJURE, CONJURE
 
-1.  [Introduction](#introduction)
-1.  [Overview](#overview)
-    1. [Target Users](#target-users)     
-3.  [Environment](#environment)
-    1.  [Installing Dependencies](#installing-dependencies)
-4. [Accessing the front-end](#accessing-the-front-end)
-5.  [Contributing](#contributing)
+## Objectives
 
+- Understanding the concepts of building a full-stack application
+- Understanding database migrations and how they work in the context of connecting with a frontend
+- Hands on building full-stack API that supports get requests
 
-## Introduction
+## Environment
 
-Welcome to the Truck Stop API showing you America's truck stops and their amenities. On the frontend is Google map api UI 
-which accesses multiple endpoints to show you locations of various truckstops, addresses, amenities, and more. 
+### Configuration
 
-This app features a customer UI/UX experience, tailored for the young posh client truckers. 
 
-In this readme, I will provide you with more details the available endpoints as well as frontend usage instructions. 
-
-## Overview
-
-### Target Users
-
-#### INFO
-
-##### John Ford
-39 - Male
-Lives in Los-Angeles
-Senior Software Engineer
-Married - 2 kids
-
-He puts quality first, even if it means it is more expensive
-
-###### Likes:
-Large selection of snacks/fast-food/restaurants
-Computers and tech
-Green areas to rest and stretch
-Cashless payment, he finds it very handy.
-He has an electric car (Tesla money money)
-
-
-###### Dislikes:
-
-Picky on cleanliness (toilets, public areas and so on...)
-Other people (crowded areas)
-
-
-###### Hobbies:
-He plays guitar, he likes music.
-Sports, big fan of american football
-Requirements
-Wifi
-ATM
-INFO
-
-
-
-##### Jane Harper
-24 - Female
-Lives in suburbs NY
-Student in architecture
-Single 
-
-She has a pet named Lloyd
-She has a student loan to pay
-
-
-###### Likes:
-Green Areas to stretch 
-She watches a lot of video about lifestyle and well-being
-She like to meditate
-Extensive use of social medias
-Healthy living
-
-
-###### Dislike:
-
-Hippies.
-
-
-###### Hobbies:
-She is part of a movie club
-She likes fitness
-
-
-
-##### Ella Vader
-28 - Female
-Washington DC
-Instagramer/influencer
-Lives with her boyfriend
-Likes
-Likes free stuff
-Likes places good for photos
-
-
-###### Dislike:
-
-Nothing
-
-##### Papi
-45 - male
-Jacksonville
-Trucker
-Divorced
-
-Not a tech guy - things need to be easy to use
-Overweight - does not care about his health
-
-
-###### Like
-Fast-food / Junk food
-He likes Nascar / Monster-Trucks
-He like hanging out with other truckers
-
-
-###### Dislike
-
-Not interested at all with cash-less
-
-
-###### Hobbies
-
-Watch TV during his free time
-Read Nascar Mag
-
-
-###### Requirements
-
-He needs somewhere else to sleep (out of his truck)
-He need somewhere he can weight his truck
-
-
-### Environment
-
-Here we used several technologies for providing the API server. 
-
-* Express
-* Knex (for building queries)
-* Vue/Vuex
-* Pg (for database connectiion)
-* Axios
-
-#### Installing Dependencies
-
-After cloning the repo, to install depedencies:
-
-```shell
-npm install
-```
-
-## Accessing the Frontend
-
-### Main landing page
-
-When 
-
-
-Built a customer UI/UX experience, tailored for the young posh population. 
-
-
-
-
-## Contributing
